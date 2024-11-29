@@ -43,6 +43,22 @@
             <button type="submit">Envoyer</button>
         </form>
     </section>
+    <?php
+    if (isset($_POST['message'])) {
+        $entete  = 'MIME-Version: 1.0' . "\r\n";
+        $entete .= 'Content-type: text/html; charset=utf-8' . "\r\n";
+        $entete .= 'From: webmaster@monsite.fr' . "\r\n";
+        $entete .= 'Reply-to: ' . $_POST['email'];
+
+        $message = '<h1>Message envoyé depuis la page Contact de monsite.fr</h1>
+    <p><b>Email : </b>' . $_POST['email'] . '<br>
+        <b>Message : </b>' . htmlspecialchars($_POST['message']) . '</p>';
+
+    $retour = mail('mlebalch1@gmail.com', 'Envoi depuis page Contact', $message, $entete);
+    if($retour)
+    echo '<p>Votre message a bien été envoyé.</p>';
+    }
+    ?>
     <footer>
         <p>&copy; 2024 Mon Portfolio</p>
         <div class="social-links">
@@ -52,8 +68,8 @@
             <a href="https://github.com/RIKIKIRITO" target="_blank">
                 <img src="Ressource/github-logo-png.png" alt="GitHub">
             </a>
-            <a href="your-cv.pdf" target="_blank">
-                <img src="cv-logo.png" alt="CV">
+            <a href="Ressource/cv-me.pdf" target="_blank">
+                <img src="Ressource/cv-logo.svg" alt="CV">
             </a>
             <a href="mailto:mlebalch1@gmail.com">
                 <img src="Ressource/mail-logo.png" alt="Email">
