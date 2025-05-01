@@ -18,16 +18,22 @@ document.querySelectorAll('.nav-links a').forEach(link => {
 
 
 document.addEventListener('click', (e) => {
-    if(!navLinks.contains(e.target) && !burgerMenu.contains(e.target)) {
+    const isBurger = e.target.closest('.burger-menu');
+    const isNavLink = e.target.closest('.nav-links');
+
+    if (!isBurger && !isNavLink) {
         burgerMenu.classList.remove('active');
         navLinks.classList.remove('active');
     }
 });
 
-
-
-
-
+// Redimensionnement fenêtre
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+        burgerMenu.classList.remove('active');
+        navLinks.classList.remove('active');
+    }
+});
 
 
 document.addEventListener('DOMContentLoaded', () => {
