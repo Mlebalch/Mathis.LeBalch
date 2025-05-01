@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <title>CapyNote - Mathis LE BALCH</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<canvas id="particle-canvas"></canvas>
+
+<nav>
+  <ul>
+    <li><a href="index.html">Portfolio</a></li>
+    <li><a href="nuit-info.html">Projet Suivant →</a></li>
+    <li id="theme-toggle"><i class="fas fa-moon"></i></li>
+  </ul>
+  <div id="google_translate_element"></div>
+</nav>
+
+<div class="project-container">
+  <div class="project-header">
+    <h1>CapyNote</h1>
+    <div class="project-context">
+      <h2>Modernisation des processus académiques</h2>
+      <div class="project-stats">
+        <div class="stat-item">
+          <div class="stat-number">+50%</div>
+          <div class="stat-label">Efficacité</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-architecture">
+    <h2>🏗️ Architecture Technique</h2>
+    <div class="architecture-diagram">
+      <div class="layer frontend">
+        <h4>Frontend</h4>
+        <div class="tech">HTML5</div>
+        <div class="tech">CSS3</div>
+        <div class="tech">JavaScript</div>
+      </div>
+      <div class="layer backend">
+        <h4>Backend</h4>
+        <div class="tech">PHP</div>
+        <div class="tech">MySQL</div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="script.js"></script>
+<script>
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'fr',
+      includedLanguages: 'en,es,de,it,pt,ru,zh-CN,ja,ar',
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+      autoDisplay: false
+    }, 'google_translate_element');
+
+    setTimeout(() => {
+      const select = document.querySelector('.goog-te-combo');
+      if(select) {
+        select.style.opacity = '1';
+        select.style.visibility = 'visible';
+      }
+    }, 1000);
+  }
+
+
+  const script = document.createElement('script');
+  script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+  document.head.appendChild(script);
+</script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <p>© 2024 Votre Le Balch. Tous droits réservés</p>
+      <div class="social-links">
+        <a href="https://github.com/Mlebalch"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/mathis-le-balch-3a6778255/"><i class="fab fa-linkedin"></i></a>
+        <a href="https://rikikirito.itch.io/"><i class="fab fa-itch-io"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+</html>

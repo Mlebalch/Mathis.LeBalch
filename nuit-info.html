@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Nuit de l'Info - Mathis LE BALCH</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<canvas id="particle-canvas"></canvas>
+
+<nav>
+    <ul>
+        <li><a href="index.html">Portfolio</a></li>
+        <li><a href="train.html">Projet Suivant →</a></li>
+        <li id="theme-toggle"><i class="fas fa-moon"></i></li>
+    </ul>
+    <div id="google_translate_element"></div>
+</nav>
+
+<div class="project-container">
+    <div class="project-header">
+        <h1>La Nuit de l'Info 2024</h1>
+        <div class="project-meta">
+            <span class="project-date">Décembre 2023/2024</span>
+            <span class="project-duration">24h intensives</span>
+            <span class="project-team">Équipe de 5 développeurs</span>
+        </div>
+    </div>
+
+    <div class="project-content">
+        <div class="project-section">
+            <h2>🚀 Défis Relevés</h2>
+            <ul class="project-highlights">
+                <li>Développement full-stack en temps limité</li>
+                <li>Intégration d'API externes</li>
+                <li>Optimisation des performances</li>
+            </ul>
+        </div>
+
+        <div class="project-section">
+            <h2>🛠️ Technologies</h2>
+            <div class="tech-stack">
+                <div class="tech-item">PHP 8.2</div>
+                <div class="tech-item">JavaScript ES6</div>
+                <div class="tech-item">Bootstrap 5</div>
+                <div class="tech-item">MySQL</div>
+            </div>
+        </div>
+
+        <div class="project-section">
+            <h2>🏆 Réalisations</h2>
+            <div class="project-gallery">
+                <div class="achievement-card">
+                    <h3>Médaille de Bronze</h3>
+                    <p>Classement Green Development</p>
+                    <div class="achievement-badge">🥉</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+<script>
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'fr',
+            includedLanguages: 'en,es,de,it,pt,ru,zh-CN,ja,ar',
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+            autoDisplay: false
+        }, 'google_translate_element');
+
+
+        setTimeout(() => {
+            const select = document.querySelector('.goog-te-combo');
+            if(select) {
+                select.style.opacity = '1';
+                select.style.visibility = 'visible';
+            }
+        }, 1000);
+    }
+
+
+    const script = document.createElement('script');
+    script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+    document.head.appendChild(script);
+</script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <p>© 2024 Votre Le Balch. Tous droits réservés</p>
+            <div class="social-links">
+                <a href="https://github.com/Mlebalch"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/mathis-le-balch-3a6778255/"><i class="fab fa-linkedin"></i></a>
+                <a href="https://rikikirito.itch.io/"><i class="fab fa-itch-io"></i></a>
+            </div>
+        </div>
+    </div>
+</footer>
+</html>

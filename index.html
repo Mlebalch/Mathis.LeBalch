@@ -1,88 +1,206 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Style Hades</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=MedievalSharp&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <meta name="google" content="notranslate">
 </head>
+
 <body>
-<header>
-    <h1>Mon Portfolio</h1>
-    <nav>
-        <ul>
-            <li><a href="#about">À propos</a></li>
-            <li><a href="#projects">Projets</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+
+<canvas id="particle-canvas"></canvas>
+<nav>
+    <ul>
+        <li><a href="#home">Accueil</a></li>
+        <li><a href="#projects">Projets</a></li>
+        <li><a href="#skills">Compétences</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li id="theme-toggle">
+            <i class="fas fa-moon"></i>
+        </li>
+    </ul>
+    <div id="google_translate_element" ></div>
+</nav>
+
+<header id="home">
+    <div class="container">
+        <h1>Mathis LE BALCH</h1>
+        <p>Développeur Jeux Vidéo & Applications Web</p>
+        <p class="presentation">Étudiant en 2ème année d'informatique à l'IUT Montpellier-Sète<br>
+            Passionné par la création de jeux vidéo et d'applications web</p>
+    </div>
 </header>
-<section id="about">
-    <h2>Mathis LE BALCH</h2>
-    <p>Je suis un actuelle en 2eme Années d'informatique a l'IUT Montpellier-Sète. Je suis passionné par la création de jeux video et  d'application web.</p>
-</section>
+
+<!-- Projets -->
 <section id="projects">
-    <h2>Mes Projets</h2>
-    <div class="project-container">
-        <a href="Project1.html"><div class="project">
-            <h3>Nuit de l'info</h3>
-            <img src="Ressource/nuitinfo2024.png">
-            <p>Participation a la nuit de l'info 2024</p>
+    <div class="container">
+        <h2>Projets Réalisés</h2>
+        <div class="project-grid">
+            <!-- 1 -->
+            <div class="project-card">
+                <a href="nuit-info.html" >
+                    <img src="ressources/nuit-info.png" alt="La Nuit de l'Info">
+                <h3>La Nuit de l'Info</h3>
+                <div class="project-content">
+                    <h4>Application Web pour Compétition Nationale</h4>
+                    <div class="project-details">
+                        <div class="technologies">
+                            <h5>Technologies :</h5>
+                            <ul>
+                                <li>HTML/CSS</li>
+                                <li>JavaScript</li>
+                                <li>PHP</li>
+                                <li>Bootstrap</li>
+                            </ul>
+                        </div>
+                        <div class="achievements">
+                            <h5>Réalisations :</h5>
+                            <ul>
+                                <li>Médaille de Bronze Green Development 2024</li>
+                                <li>Gestion de projet en équipe sous pression</li>
+                                <li>Développement full-stack en 24h</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                </a>
+            </div>
+
+            <!--  2 -->
+            <div class="project-card">
+                <a href="train.html" >
+                    <img src="ressources/trainsPlateaux.png" alt="Jeu de Société Train">
+                <h3>Jeu de Société "Train"</h3>
+                <div class="project-content">
+                    <h4>Version Numérique de Jeu de Plateau</h4>
+                    <div class="project-details">
+                        <div class="technologies">
+                            <h5>Technologies :</h5>
+                            <ul>
+                                <li>Java</li>
+                                <li>JavaFX</li>
+                                <li>Git</li>
+                            </ul>
+                        </div>
+                        <div class="achievements">
+                            <h5>Compétences :</h5>
+                            <ul>
+                                <li>Conception d'interface graphique</li>
+                                <li>Modélisation de système complexe</li>
+                                <li>Gestion de version collaborative</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                </a>
+            </div>
+
+            <!-- 3 -->
+            <div class="project-card">
+                <a href="capynote.html">
+                    <img src="ressources/CapyNote.png" alt="CapyNote">
+                <h3>CapyNote</h3>
+                <div class="project-content">
+                    <h4>Gestion des Poursuites d'Études</h4>
+                    <div class="project-details">
+                        <div class="technologies">
+                            <h5>Stack Technique :</h5>
+                            <ul>
+                                <li>HTML/CSS/JS</li>
+                                <li>PHP/MySQL</li>
+                                <li>Git</li>
+                            </ul>
+                        </div>
+                        <div class="achievements">
+                            <h5>Impact :</h5>
+                            <ul>
+                                <li>+50% d'efficacité administrative</li>
+                                <li>Centralisation des données</li>
+                                <li>Génération automatisée de PDF</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                </a>
+            </div>
         </div>
-        </a>
-        <a href="Project2.html">
-            <div class="project">
-                <h3>Code Gam Jam</h3>
-                <img src="Ressource/Logo-Code-Game-Jam-3ème-Edition-1024x310.webp">
-                <p>Participation a la Code Gam jam 2024</p>
-            </div>
-        </a>
-
-        <a href="Project3.html">
-            <div class="project">
-                <h3>Jeux de TRAIN </h3>
-                <img src="Ressource/plateau.png">
-                <p>Creation d'un jeux de societer Train en java </p>
-            </div>
-        </a>
-
-        <a href="Project4.html">
-            <div class="project">
-                <h3>site web poursuite d'étude</h3>
-                <img src="Ressource/Capture%20d’écran%202025-01-13%20122254.png">
-                <p>Création d'un site web de géstion de poursuite d'étude</p>
-            </div>
-        </a>
     </div>
 </section>
-<section id="contact">
-    <h2>Contactez-moi</h2>
-    <form>
-        <label for="name">Nom:</label>
-        <input type="text" id="name" name="name">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email">
-        <label for="message">Message:</label>
-        <textarea id="message" name="message"></textarea>
-        <button type="submit">Envoyer</button>
-    </form>
+
+<!-- Compétences -->
+<section id="skills">
+    <div class="container">
+        <h2>Compétences Techniques</h2>
+        <div class="skills-container">
+            <div class="skill-item">Java/JFX</div>
+            <div class="skill-item">Git Workflow</div>
+            <div class="skill-item">Gestion de Projet</div>
+            <div class="skill-item">C</div>
+            <div class="skill-item">C#</div>
+            <div class="skill-item">PHP</div>
+            <div class="skill-item">Python</div>
+            <div class="skill-item">HTML5</div>
+            <div class="skill-item">JavaScript</div>
+            <div class="skill-item">Bulma</div>
+            <div class="skill-item">TailwindCSS</div>
+            <div class="skill-item">RayLib</div>
+            <div class="skill-item">CSS3</div>
+            <div class="skill-item">Markdown</div>
+            <div class="skill-item">SQLite/MySQL</div>
+            <div class="skill-item">Docker</div>
+            <div class="skill-item">Figma</div>
+        </div>
+    </div>
 </section>
 
+    <section id="contact">
+        <div class="container">
+            <h2>Contact</h2>
+            <form class="contact-form">
+                <input type="text" placeholder="Nom">
+                <input type="email" placeholder="Email">
+                <textarea placeholder="Message" rows="5"></textarea>
+                <button type="submit">Envoyer <i class="fas fa-paper-plane"></i></button>
+            </form>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+
+
+<script async>
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'fr',
+            includedLanguages: 'en,es,de,it,pt,ru,zh-CN,ja,ar',
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+            autoDisplay: false
+        }, 'google_translate_element');
+
+
+    }
+
+    const script = document.createElement('script');
+    script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+    document.head.appendChild(script);
+</script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+<!-- Footer -->
 <footer>
-    <p>&copy; 2024 Mon Portfolio</p>
-    <div class="social-links">
-        <a href="https://www.linkedin.com/in/mathis-le-balch-3a6778255/" target="_blank">
-            <img src="Ressource/Linkedin%20logo.jpg" alt="LinkedIn">
-        </a>
-        <a href="https://github.com/Mlebalch" target="_blank">
-            <img src="Ressource/github-logo-png.png" alt="GitHub">
-        </a>
-        <a href="Ressource/CV%20Mathis%20LE%20BALCH%20(3)%20(3).pdf" target="_blank">
-            <img src="Ressource/cv-logo.svg" alt="CV">
-        </a>
-        <a href="mailto:mlebalch1@gmail.com">
-            <img src="Ressource/mail-logo.png" alt="Email">
-        </a>
+    <div class="container">
+        <div class="footer-content">
+            <p>© 2024 Votre Le Balch. Tous droits réservés</p>
+            <div class="social-links">
+                <a href="https://github.com/Mlebalch"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/mathis-le-balch-3a6778255/"><i class="fab fa-linkedin"></i></a>
+                <a href="https://rikikirito.itch.io/"><i class="fab fa-itch-io"></i></a>
+            </div>
+        </div>
     </div>
 </footer>
-</body>
 </html>
