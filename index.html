@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <meta name="google" content="notranslate">
+    <link rel="icon" href="ressources/hadesIcon.png" />
+
 </head>
 
 <body>
@@ -42,10 +44,15 @@
 
 <header id="home">
     <div class="container">
-        <h1>Mathis LE BALCH</h1>
-        <p>Développeur Jeux Vidéo & Applications Web</p>
-        <p class="presentation">Étudiant en 2ème année d'informatique à l'IUT Montpellier-Sète<br>
-            Passionné par la création de jeux vidéo et d'applications web</p>
+        <div class="header-content">
+            <img src="ressources/pdp.jpg" alt="Mathis LE BALCH" class="profile-pic">
+            <div class="title-container">
+                <h1>Mathis LE BALCH</h1>
+                <p>Développeur Jeux Vidéo & Applications Web</p>
+                <p class="presentation">Étudiant en 2ème année d'informatique à l'IUT Montpellier-Sète<br>
+                    Passionné par la création de jeux vidéo et d'applications web</p>
+            </div>
+        </div>
     </div>
 </header>
 
@@ -186,10 +193,11 @@
             <textarea id="message" name="message" placeholder="Votre message..." required></textarea>
 
                 <!-- Honeypot Spam Protection -->
+
+            <button type="submit">Envoyer <i class="fas fa-paper-plane"></i></button>
                 <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
                 <input type="hidden" name="redirect" value="#contact">
 
-            <button type="submit">Envoyer <i class="fas fa-paper-plane"></i></button>
             </form>
         </div>
     </section>
@@ -213,6 +221,7 @@
     script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
     document.head.appendChild(script);
 </script>
+<div class="custom-cursor"></div>
 </body>
 <!-- Footer -->
 <footer>

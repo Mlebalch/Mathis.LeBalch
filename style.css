@@ -19,7 +19,53 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     position: relative;
+    cursor: none;
 }
+
+
+
+
+.custom-cursor {
+    position: fixed;
+    pointer-events: none;
+    width: 30px;
+    height: 30px;
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    box-shadow: 0 0 15px var(--primary-color);
+    transition:
+            transform 0.3s ease,
+            width 0.3s ease,
+            height 0.3s ease;
+    z-index: 9999;
+    mix-blend-mode: exclusion;
+}
+
+.custom-cursor.active {
+    transform: scale(1.5);
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 25px var(--secondary-color);
+}
+/*empeche la selection de texte */
+
+.is-dragging * {
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+}
+
+
+.is-dragging input,
+.is-dragging textarea {
+    -webkit-user-select: text !important;
+    -moz-user-select: text !important;
+    -ms-user-select: text !important;
+    user-select: text !important;
+}
+
+
+
 
 body::before {
     content: '';
@@ -421,13 +467,22 @@ footer.visible {
         top: 15px;
         transform: scale(0.9);
     }
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .profile-pic {
+        width: 200px;
+        height: 200px;
+    }
+
 }
 
 
 
 
 
-/* Styles spécifiques aux pages projet */
+/* Styles projet */
 .project-container {
     max-width: 1200px;
     margin: 100px auto;
@@ -479,3 +534,41 @@ footer.visible {
     border-radius: 10px;
     text-align: center;
 }
+
+
+
+
+/*image de profil */
+
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    position: relative;
+}
+
+.profile-pic {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    border: 5px solid var(--primary-color);
+    box-shadow: 0 0 30px rgba(197, 59, 35, 0.5);
+    animation: float 4s ease-in-out infinite;
+    filter: grayscale(20%) contrast(110%);
+    transition: all 0.3s ease;
+}
+
+.profile-pic:hover {
+    transform: scale(1.05);
+    filter: grayscale(0%) contrast(120%);
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
+
+
+
+

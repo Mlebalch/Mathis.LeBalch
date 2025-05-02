@@ -1,4 +1,12 @@
 
+let mouseX = -1000;
+let mouseY = -1000;
+const mouseRadius = 120;
+const maxForce = 1.2;
+let isDragging = false;
+let startY;
+let startScrollY;
+
 // Gestion du menu burger
 const burgerMenu = document.querySelector('.burger-menu');
 const navLinks = document.querySelector('.nav-links');
@@ -37,6 +45,49 @@ window.addEventListener('resize', () => {
 
 
 document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('mousedown', (e) => {
+        if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
+            isDragging = true;
+            startY = e.clientY;
+            startScrollY = window.scrollY;
+            document.body.classList.add('is-dragging');
+            e.preventDefault(); // Empêche la sélection accidentelle
+        }
+    });
+
+    document.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+
+        const deltaY = e.clientY - startY;
+        window.scrollTo({
+            top: startScrollY - deltaY * 1.5,
+            behavior: 'instant'
+        });
+        e.preventDefault();
+    });
+
+    document.addEventListener('mouseup', () => {
+        isDragging = false;
+        document.body.classList.remove('is-dragging');
+    });
+
+    document.addEventListener('mouseleave', () => {
+        isDragging = false;
+        document.body.classList.remove('is-dragging');
+    });
+
+    const cursor = document.createElement('div');
+    cursor.className = 'custom-cursor';
+    document.body.appendChild(cursor);
+
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.left = `${e.clientX - 15}px`;
+        cursor.style.top = `${e.clientY - 15}px`;
+    });
+
+    document.addEventListener('mousedown', () => cursor.classList.add('active'));
+    document.addEventListener('mouseup', () => cursor.classList.remove('active'));
+
     // Gestion du thème
     const themeToggle = document.getElementById('theme-toggle');
     let currentTheme = localStorage.getItem('theme') || 'dark';
@@ -134,20 +185,48 @@ document.addEventListener('DOMContentLoaded', () => {
             this.x = Math.random() * canvas.width;
             this.y = Math.random() * canvas.height;
             this.size = Math.random() * 3 + 1;
-            this.speedX = (Math.random() - 0.5) * 0.7;
-            this.speedY = (Math.random() - 0.5) * 0.7;
+            this.baseSpeedX = (Math.random() - 0.5) * 0.9;
+            this.baseSpeedY = (Math.random() - 0.5) * 0.9;
+            this.speedX = this.baseSpeedX;
+            this.speedY = this.baseSpeedY;
             this.color = particleColors[Math.floor(Math.random() * particleColors.length)];
             this.opacity = Math.random() * 0.6 + 0.2;
         }
+        reset() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.speedX = (Math.random() - 0.5) * 0.9;
+            this.speedY = (Math.random() - 0.5) * 0.9;
+        }
 
         update() {
+            const dx = this.x - mouseX; // Particule vers souris
+            const dy = this.y - mouseY; // Particule vers souris
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance < mouseRadius && distance > 0) {
+                const force = (mouseRadius - distance) / mouseRadius * maxForce;
+                const angle = Math.atan2(dy, dx);
+
+                this.speedX = Math.cos(angle) * force * 0.9;
+                this.speedY = Math.sin(angle) * force * 0.9;
+            }
+
+            this.speedX += (this.baseSpeedX - this.speedX) * 0.05;
+            this.speedY += (this.baseSpeedY - this.speedY) * 0.05;
+
+
+            this.speedX *= 0.98;
+            this.speedY *= 0.98;
+
+
             this.x += this.speedX;
             this.y += this.speedY;
 
-            if (this.x > canvas.width || this.x < 0) this.speedX *= -1;
-            if (this.y > canvas.height || this.y < 0) this.speedY *= -1;
-        }
 
+            if (this.x > canvas.width || this.x < 0) this.speedX *= -0.7;
+            if (this.y > canvas.height || this.y < 0) this.speedY *= -0.7;
+        }
         draw() {
             ctx.save();
             ctx.globalAlpha = this.opacity;
@@ -167,16 +246,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+
         particles.forEach(particle => {
+            // Réinitialiser les particules sortantes
+            if (particle.x < -100 ||
+                particle.x > canvas.width + 100 ||
+                particle.y < -100 ||
+                particle.y > canvas.height + 100) {
+                particle.reset();
+            }
+
             particle.update();
             particle.draw();
         });
+
         requestAnimationFrame(animate);
     }
 
     window.addEventListener('resize', () => {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
+    });
+    document.addEventListener('mousemove', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        mouseX = e.clientX - rect.left;
+        mouseY = e.clientY - rect.top;
     });
 
 
