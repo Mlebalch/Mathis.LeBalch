@@ -151,6 +151,9 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.project-card, .skill-item, footer, section').forEach(el => {
         elementObserver.observe(el);
     });
+    document.querySelectorAll('.timeline-item').forEach(el => {
+        elementObserver.observe(el);
+    });
 
 
 

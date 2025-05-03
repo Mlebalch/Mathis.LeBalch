@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=MedievalSharp&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <meta name="google" content="notranslate">
+    <link rel="icon" href="ressources/hadesIcon.png" />
+
+</head>
+
+<body>
+
+<canvas id="particle-canvas"></canvas>
+<nav>
+    <div class="nav-container">
+
+        <button class="burger-menu" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+
+        <ul class="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="Portfolio-apprentissage.html">Portfolio Apprentissage </a></li>
+        </ul>
+
+
+        <div class="nav-controls">
+            <div id="google_translate_element"></div>
+            <button id="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </div>
+</nav>
+
+
+<section id="apprentissage" class="container main-section" >
+    <h2>Portfolio d'Apprentissage</h2>
+
+    <!-- Conteneur des boutons -->
+    <div class="competence-buttons">
+        <button class="competence-btn active" data-target="c3">Compétence 3 | Optimiser</button>
+        <button class="competence-btn" data-target="c4">Compétence 4 | Administrer</button>
+        <button class="competence-btn" data-target="c5">Compétence 5 | Conduire un projet</button>
+    </div>
+
+    <!-- Contenu des compétences -->
+    <div class="competence-content">
+        <!-- Compétence 3 -->
+        <div id="c3" class="competence-section active">
+            <h3>Administrer des systèmes informatiques communicants complexes</h3>
+
+            <div class="competence-item">
+                <h4>CE3.01 | Sécuriser le SI</h4>
+                <p>Lors de la SAE LAMP, j’ai appris à configurer un serveur web sécurisé, notamment avec PHP et MySQL, en mettant en place des droits d’accès sur la machine virtuelle. .</p>
+            </div>
+
+            <div class="competence-item">
+                <h4>CE3.02 | Offrir une qualité de service optimale</h4>
+                <p>Lors de la Code Game Jam, j’ai programmé un jeu en C avec mon équipe, ce qui m’a forcé à optimiser le code pour assurer de bonnes performances dans un temps très réduit.</p>
+            </div>
+            <h3> Composantes essentielles </h3>
+
+            <div class="competence-item">
+                <h4>AC2 | Utiliser des serveurs et des services virtualisés</h4>
+                <p>Dans la SAE où nous avons installé un environnement de développement web (LAMP), j’ai utilisé une machine virtuelle pour déployer les services requis.</p>
+            </div>
+            <div class="competence-item">
+                <h4>AC3 | Sécuriser les services et données d’un système</h4>
+                <p>L’installation manuelle des composants et la configuration fine (droits utilisateurs, pare-feu) m’ont permis d’acquérir des notions de sécurisation de services.</p>
+            </div>
+
+        </div>
+
+        <!-- Compétence 4 -->
+        <div id="c4" class="competence-section">
+            <h3>Gérer des données de l'information</h3>
+
+            <div class="competence-item">
+                <h4>CE4.01 | Respect des données personnelles</h4>
+                <p>Dans le projet CapyNote, j’ai manipulé les notes d’étudiants, ce qui m’a sensibilisé à la confidentialité et au traitement des données personnelles.</p>
+            </div>
+            <div class="competence-item">
+                <h4>CE4.02 | Enjeux sociétaux et cohérence des données</h4>
+                <p>La base de données créée pour l’application musicale devait être fiable, complète, et cohérente pour répondre aux besoins d’analyse et d’interrogation.</p>
+            </div>
+            <h3> Composantes essentielles </h3>
+            <div class="competence-item">
+                <h4>AC1 | Optimiser les modèles de données</h4>
+                <p>Grâce aux modèles entité-association réalisés pour les projets de base de données (banque et application musicale), j’ai structuré l’information de manière optimale.</p>
+            </div>
+            <div class="competence-item">
+                <h4>AC2 | Assurer la sécurité des données</h4>
+                <p>Les scripts SQL étaient construits avec attention aux contraintes d'intégrité (clés primaires, étrangères) et aux vues restreignant l'accès à certaines informations.</p>
+            </div>
+            <div class="competence-item">
+                <h4>AC4 | Manipuler des données hétérogènes</h4>
+                <p>Lors de CapyNote, nous avons dû intégrer les données de Scodoc dans notre propre système, impliquant un traitement de formats variés et la normalisation des données.</p>
+            </div>
+
+
+            <!-- Ajouter les autres items de la compétence 4 -->
+        </div>
+
+        <!-- Compétence 5 -->
+        <div id="c5" class="competence-section">
+            <h3> Participer à la conception et à la mise en œuvre d’un projet système d’information</h3>
+
+            <div class="competence-item">
+                <h4>CE5.01 | Communiquer avec les acteurs du projet</h4>
+                <p>Lors de la Nuit de l’Info, la communication dans l’équipe était essentielle pour se répartir efficacement les tâches sous pression.</p>
+            </div>
+            <div class="competence-item">
+                <h4>CE5.02 | Respecter les règles et normes</h4>
+                <p>Dans le projet CapyNote, nous avons suivi les normes de développement (versionnage Git, structure MVC PHP) et respecté les contraintes du client (IUT).</p>
+            </div>
+
+            <h3> Composantes essentielles </h3>
+            <div class="competence-item">
+                <h4>AC1 | Identifier les processus présents dans une organisation</h4>
+                <p>CapyNote partait d’un besoin réel de l’IUT pour fluidifier le traitement des poursuites d’études, ce qui m’a permis d’analyser un processus métier existant.</p>
+            </div>
+
+            <div class="competence-item">
+                <h4>AC3 | Identifier les critères de faisabilité</h4>
+                <p>Lors du projet "Train", nous avons dû choisir les fonctionnalités à implémenter selon le temps et les compétences disponibles, en évaluant la complexité.</p>
+            </div>
+
+            <div class="competence-item">
+                <h4>AC4 | Définir une démarche de suivi de projet</h4>
+                <p>Dans la SAE "organisation de festival", nous avons utilisé un tableau de répartition des tâches et un budget prévisionnel, simulant une gestion de projet réelle.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<script>
+    // Gestion des boutons de compétences
+    document.querySelectorAll('.competence-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            // Retirer la classe active de tous les boutons et sections
+            document.querySelectorAll('.competence-btn, .competence-section').forEach(el => {
+                el.classList.remove('active');
+            });
+
+            // Ajouter active au bouton cliqué
+            this.classList.add('active');
+
+            // Afficher la section correspondante
+            const target = this.dataset.target;
+            document.getElementById(target).classList.add('active');
+        });
+    });
+</script>
+
+
+<script src="script.js"></script>
+
+
+<script async>
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'fr',
+            includedLanguages: 'en,es,de,it,pt,ru,zh-CN,ja,ar',
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+            autoDisplay: false
+        }, 'google_translate_element');
+
+
+    }
+
+    const script = document.createElement('script');
+    script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+    document.head.appendChild(script);
+</script>
+</body>
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <p>© 2024 Le Balch. Tous droits réservés</p>
+            <div class="social-links">
+                <a href="https://github.com/Mlebalch"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/mathis-le-balch-3a6778255/"><i class="fab fa-linkedin"></i></a>
+                <a href="https://rikikirito.itch.io/"><i class="fab fa-itch-io"></i></a>
+            </div>
+        </div>
+    </div>
+</footer>
+</html>
