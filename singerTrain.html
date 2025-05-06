@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>SingerTrain - Mathis LE BALCH</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=MedievalSharp&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<canvas id="particle-canvas"></canvas>
+
+<nav>
+    <div class="nav-container">
+
+        <button class="burger-menu" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+
+        <ul class="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="nuit-info.html">Projets Suivant</a></li>
+        </ul>
+
+
+        <div class="nav-controls">
+            <div id="google_translate_element"></div>
+            <button id="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<div class="project-container">
+    <div class="project-header">
+        <h1>SingerTrain</h1>
+        <div class="project-context">
+            <h2>Jeux de quiz Artiste</h2>
+            <div class="project-stats">
+                <div class="stat-item">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="project-content">
+        <div class="project-section">
+            <h2> Défis Relevés</h2>
+            <ul class="project-highlights">
+                <li>Création d'un jeu de quiz sur les artistes</li>
+                <li>Intégration de 5 API pour les données musicales et des inforamtion sur les artiste</li>
+            </ul>
+        </div>
+
+    <div class="project-architecture">
+        <h2> Architecture Technique</h2>
+        <div class="architecture-diagram">
+            <div class="layer frontend">
+                <h4>Frontend</h4>
+                <div class="tech">HTML5</div>
+                <div class="tech">CSS3</div>
+                <div class="tech">JavaScript</div>
+            </div>
+            <div class="layer backend">
+                <h4>Backend</h4>
+                <div class="tech">PHP</div>
+                <div class="tech">MySQL</div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="script.js"></script>
+<script async>
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'fr',
+            includedLanguages: 'en,es,de,it,pt,ru,zh-CN,ja,ar',
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+            autoDisplay: false
+        }, 'google_translate_element');
+
+
+    }
+
+    const script = document.createElement('script');
+    script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+    document.head.appendChild(script);
+</script>
+</body>
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <p>© 2024 Le Balch. Tous droits réservés</p>
+            <div class="social-links">
+                <a href="https://github.com/Mlebalch"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/mathis-le-balch-3a6778255/"><i class="fab fa-linkedin"></i></a>
+                <a href="https://rikikirito.itch.io/"><i class="fab fa-itch-io"></i></a>
+            </div>
+        </div>
+    </div>
+</footer>
+</html>
