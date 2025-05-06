@@ -1,11 +1,7 @@
 
-let mouseX = -1000;
-let mouseY = -1000;
-const mouseRadius = 120;
-const maxForce = 1.2;
-let isDragging = false;
-let startY;
-let startScrollY;
+
+
+
 
 // Gestion du menu burger
 const burgerMenu = document.querySelector('.burger-menu');
@@ -35,7 +31,14 @@ document.addEventListener('click', (e) => {
     }
 });
 
+
+
+
+
+
+
 // Redimensionnement fenêtre
+
 window.addEventListener('resize', () => {
     if (window.innerWidth > 768) {
         burgerMenu.classList.remove('active');
@@ -43,6 +46,53 @@ window.addEventListener('resize', () => {
     }
 });
 
+
+
+
+
+
+
+
+
+// Gestion du thème
+const themeToggle = document.getElementById('theme-toggle');
+let currentTheme = localStorage.getItem('theme') || 'dark';
+let particleColors;
+
+
+function applyTheme() {
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    themeToggle.innerHTML = currentTheme === 'dark'
+        ? '<i class="fas fa-moon"></i>'
+        : '<i class="fas fa-sun"></i>';
+
+
+    particleColors = currentTheme === 'dark'
+        ? ['#c53b23', '#e9c46a', '#fff5e6', '#7a2a1a']
+        : ['#2a5a7c', '#c53b23', '#2a1c1a', '#f0e6d6'];
+
+    particles = [];
+    init();
+}
+
+themeToggle.addEventListener('click', () => {
+    currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    localStorage.setItem('theme', currentTheme);
+    applyTheme();
+});
+
+
+
+
+
+//mouse
+let mouseX = -1000;
+let mouseY = -1000;
+const mouseRadius = 120;
+const maxForce = 1.2;
+let isDragging = false;
+let startY;
+let startScrollY;
 
 document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('mousedown', (e) => {
@@ -88,36 +138,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('mousedown', () => cursor.classList.add('active'));
     document.addEventListener('mouseup', () => cursor.classList.remove('active'));
 
-    // Gestion du thème
-    const themeToggle = document.getElementById('theme-toggle');
-    let currentTheme = localStorage.getItem('theme') || 'dark';
-    let particleColors;
-
-
-    function applyTheme() {
-        document.documentElement.setAttribute('data-theme', currentTheme);
-        themeToggle.innerHTML = currentTheme === 'dark'
-            ? '<i class="fas fa-moon"></i>'
-            : '<i class="fas fa-sun"></i>';
-
-
-        particleColors = currentTheme === 'dark'
-            ? ['#c53b23', '#e9c46a', '#fff5e6', '#7a2a1a']
-            : ['#2a5a7c', '#c53b23', '#2a1c1a', '#f0e6d6'];
-
-        particles = [];
-        init();
-    }
-
-    themeToggle.addEventListener('click', () => {
-        currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        localStorage.setItem('theme', currentTheme);
-        applyTheme();
-    });
-
-
-
-
 
     //  observateurs
     const titleObserver = new IntersectionObserver((entries) => {
@@ -128,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 entry.target.classList.remove('visible');
             }
         });
-    }, { threshold: 0.1 });
+    }, {threshold: 0.1});
 
     const elementObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -154,6 +174,8 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.timeline-item').forEach(el => {
         elementObserver.observe(el);
     });
+
+});
 
 
 
@@ -280,4 +302,23 @@ document.addEventListener('DOMContentLoaded', () => {
     applyTheme();
     init();
     animate();
-});
+
+
+
+
+
+//google translate
+function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+        pageLanguage: 'fr',
+        includedLanguages: 'en,es,de,it,pt,ru,zh-CN,ja,ar',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+        autoDisplay: false
+    }, 'google_translate_element');
+
+
+}
+
+const script = document.createElement('script');
+script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+document.head.appendChild(script);
