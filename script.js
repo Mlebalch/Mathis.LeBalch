@@ -150,13 +150,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, {threshold: 0.1});
 
+
     const elementObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
             } else {
                 entry.target.classList.remove('visible');
+                entry.target.style.opacity = 1; // Force l'affichage sur mobile
+
             }
+            if (window.innerWidth > 768) { // Garde l'animation seulement sur desktop
+                entry.target.classList.add('visible');
+            } else {
+                entry.target.style.opacity = 1; // Force l'affichage sur mobile
+                entry.target.style.transform = 'none';
+            }
+
         });
     }, {
         threshold: 0.1,
