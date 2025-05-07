@@ -416,7 +416,12 @@ footer.visible {
 [data-theme="light"] .project-card {
     background: rgba(255, 255, 255, 0.9);
 }
-
+[data-theme="light"] .nav-links a{
+    color: var(--dark-bg);
+}
+[data-theme="light"] .timeline-content p {
+    color: var(--dark-bg);
+}
 [data-theme="light"] .social-links a {
     color: var(--primary-color);
 }
