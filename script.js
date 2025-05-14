@@ -1,4 +1,8 @@
-// script.js
+
+
+
+
+
 // Gestion du menu burger
 const burgerMenu = document.querySelector('.burger-menu');
 const navLinks = document.querySelector('.nav-links');
@@ -26,12 +30,14 @@ burgerMenu.addEventListener('click', () => {
     navLinks.classList.toggle('active');
 });
 
+
 document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
         burgerMenu.classList.remove('active');
         navLinks.classList.remove('active');
     });
 });
+
 
 document.addEventListener('click', (e) => {
     const isBurger = e.target.closest('.burger-menu');
@@ -43,7 +49,14 @@ document.addEventListener('click', (e) => {
     }
 });
 
+
+
+
+
+
+
 // Redimensionnement fenêtre
+
 window.addEventListener('resize', () => {
     if (window.innerWidth > 768) {
         burgerMenu.classList.remove('active');
@@ -51,16 +64,26 @@ window.addEventListener('resize', () => {
     }
 });
 
+
+
+
+
+
+
+
+
 // Gestion du thème
 const themeToggle = document.getElementById('theme-toggle');
 let currentTheme = localStorage.getItem('theme') || 'dark';
 let particleColors;
+
 
 function applyTheme() {
     document.documentElement.setAttribute('data-theme', currentTheme);
     themeToggle.innerHTML = currentTheme === 'dark'
         ? '<i class="fas fa-moon"></i>'
         : '<i class="fas fa-sun"></i>';
+
 
     particleColors = currentTheme === 'dark'
         ? ['#c53b23', '#e9c46a', '#fff5e6', '#7a2a1a']
@@ -76,7 +99,11 @@ themeToggle.addEventListener('click', () => {
     applyTheme();
 });
 
-// Gestion du curseur et du drag
+
+
+
+
+//mouse
 let mouseX = -1000;
 let mouseY = -1000;
 const mouseRadius = 120;
@@ -127,7 +154,8 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('mousedown', () => cursor.classList.add('active'));
     document.addEventListener('mouseup', () => cursor.classList.remove('active'));
 
-    // Observateurs d'intersection
+
+    //  observateurs
     const titleObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -135,6 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }, {threshold: 0.1});
+
 
     const elementObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -148,6 +177,21 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.project-card, .skill-item, footer, section, .contact-form').forEach(el => elementObserver.observe(el));
     document.querySelectorAll('.timeline-item').forEach(el => elementObserver.observe(el));
 });
+
+// Animation formulaire
+const formObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = 'translateY(0)';
+        } else {
+            entry.target.style.opacity = 0;
+            entry.target.style.transform = 'translateY(30px)';
+        }
+    });
+});
+formObserver.observe(document.querySelector('.contact-form'));
+
 
 // Particules
 const canvas = document.getElementById('particle-canvas');

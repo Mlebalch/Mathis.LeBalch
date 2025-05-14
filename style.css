@@ -235,6 +235,7 @@ section h2::after {
     width: 100%;
     margin: 1rem 0;
     padding: 1rem;
+
 }
 .project-card.visible {
     opacity: 1;
@@ -418,10 +419,10 @@ footer.visible {
     --dark-bg: #f0e6d6;
     --light-text: #2a1c1a;
 }
-
-[data-theme="light"] .project-card {
-    background: rgba(255, 255, 255, 0.9);
+[data-theme="light"] a {
+    color: var(--dark-bg);
 }
+
 [data-theme="light"] .nav-links a{
     color: var(--dark-bg);
 }
@@ -429,12 +430,32 @@ footer.visible {
     color: var(--dark-bg);
 }
 [data-theme="light"] .social-links a {
-    color: var(--primary-color);
+    color: var(--dark-bg);
 }
 
 [data-theme="light"] .social-links a:hover {
-    color: var(--secondary-color);
+    color: var(--primary-color);
 }
+[data-theme="light"] input, textarea{
+    background: var(--light-text);
+    color: var(--dark-bg);
+    border: 1px solid var(--primary-color);
+}
+[data-theme="light"] .presentation {
+    color: var(  --light-text);
+}
+
+[data-theme="light"] footer p {
+    color: var(--dark-bg);
+}
+
+[data-theme="light"] .date {
+    color: var(--primary-color);
+}
+[data-theme="light"] .competence-item p {
+    color: var(--light-text)!important;
+}
+
 
 /* Google Translate */
 #google_translate_element {
@@ -483,11 +504,6 @@ footer.visible {
         grid-template-columns: 1fr;
     }
 
-    #google_translate_element {
-        right: 80px;
-        top: 15px;
-        transform: scale(0.9);
-    }
     .header-content {
         flex-direction: column;
         text-align: center;
@@ -567,16 +583,7 @@ footer.visible {
 
 
 
-/* Styles projet */
-.project-container {
-    max-width: 1200px;
-    margin: 80px auto;
-    padding: 120px 0 60px;
-    background: rgba(0, 0, 0, 0.7);
-    border-radius: 15px;
-    box-shadow: 0 0 20px rgba(197, 59, 35, 0.3);
-    width: 95%;
-}
+
 
 
 .project-header h1 {
@@ -584,44 +591,18 @@ footer.visible {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.project-meta {
-    display: flex;
-    gap: 20px;
-    margin: 20px 0;
-    color: var(--secondary-color);
-}
 
-.tech-stack {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 15px;
-}
 
-.tech-item {
-    background: var(--primary-color);
-    padding: 10px;
-    text-align: center;
-    border-radius: 5px;
-    transition: transform 0.3s ease;
-}
+
+
+
 
 .tech-item:hover {
     transform: translateY(-5px);
 }
 
 
-.project-gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-}
 
-.achievement-card {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-}
 
 
 
@@ -715,6 +696,7 @@ footer.visible {
 
 .competence-item p {
     line-height: 1.6;
+    color: var(--light-text);
 }
 .main-section {
     position: relative;
@@ -855,9 +837,7 @@ footer.visible {
 
 
 /* Grilles responsives */
-.project-grid,
-.tech-stack,
-.project-gallery {
+.project-grid{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1rem;
@@ -928,6 +908,10 @@ img {
     justify-content: center;
     gap: 0.5rem;
 }
+
+
+
+
 .contact-form {
     opacity: 0;
     transform: translateY(30px);
@@ -936,4 +920,169 @@ img {
 .contact-form.visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+
+
+
+.project-container {
+    max-width: 1200px;
+    margin: 100px auto 50px;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(197, 59, 35, 0.2);
+}
+
+.project-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem 0;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.project-meta {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1.5rem;
+    font-size: 0.9em;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--secondary-color);
+}
+
+.project-section {
+    margin: 3rem 0;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+.tech-stack {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.tech-item {
+    padding: 0.8rem;
+    text-align: center;
+    background: var(--primary-color);
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.achievement-card {
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-left: 4px solid var(--secondary-color);
+    border-radius: 8px;
+}
+
+.project-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.project-gallery img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid var(--primary-color);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .project-container {
+        margin-top: 80px;
+        padding: 1rem;
+    }
+
+    .project-meta {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+
+[data-theme="light"] {
+    --primary-color: #c53b23;
+    --secondary-color: #2a5a7c;
+    --dark-bg: #f0e6d6;
+    --light-text: #2a1c1a;
+
+    /* Ajouts spécifiques aux projets */
+    .project-container,
+    .competence-section {
+        background: rgba(255, 255, 255, 0.9) !important;
+        border: 2px solid var(--primary-color);
+    }
+
+    .project-section,
+    .competence-item {
+        background: rgba(255, 255, 255, 0.7) !important;
+        border-color: var(--secondary-color);
+    }
+
+    .tech-item,
+    .achievement-card {
+        background: var(--secondary-color) !important;
+        color: var(--dark-bg) !important;
+    }
+
+    .project-header h1,
+    .project-section h2,
+    .competence-section h3 {
+        color: var(--primary-color) !important;
+        text-shadow: 1px 1px 0 var(--secondary-color);
+    }
+
+    .meta-item {
+        color: var(--primary-color) !important;
+    }
+}
+.project-container,
+.tech-item,
+.achievement-card,
+.competence-section {
+    transition: all 0.4s ease-in-out;
+}
+
+
+[data-theme="light"] .project-gallery img {
+    border: 2px solid var(--secondary-color);
+    filter: brightness(0.95);
+}
+
+[data-theme="light"] {
+    .competence-btn {
+        background: var(--primary-color);
+        color: var(--dark-bg);
+    }
+
+    .competence-btn.active {
+        background: var(--secondary-color);
+        color: var(--light-text);
+    }
+
+    .competence-item {
+        border-left-color: var(--primary-color);
+    }
 }
