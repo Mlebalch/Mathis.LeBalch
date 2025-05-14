@@ -27,7 +27,10 @@ body {
     cursor: none;
     min-width: 320px;
 }
-
+nav:hover ~ .custom-cursor,
+nav *:hover ~ .custom-cursor {
+    display: none !important;
+}
 
 .custom-cursor {
     position: fixed;
@@ -41,7 +44,7 @@ body {
             transform 0.3s ease,
             width 0.3s ease,
             height 0.3s ease;
-    z-index: 9999;
+    z-index: 1001;
     mix-blend-mode: exclusion;
 }
 
@@ -50,6 +53,7 @@ body {
     border-color: var(--secondary-color);
     box-shadow: 0 0 25px var(--secondary-color);
 }
+
 /*empeche la selection de texte */
 
 .is-dragging * {
@@ -101,6 +105,7 @@ nav {
     background: rgba(42, 28, 26, 0.95);
     z-index: 1000;
     border-bottom: 2px solid var(--primary-color);
+    cursor: auto !important;
 }
 
 .nav-container {
@@ -435,7 +440,7 @@ footer.visible {
     position: fixed;
     top: 20px;
     right: 120px;
-    z-index: 1001;
+    z-index: 9999999;
 }
 
 .goog-te-combo {
@@ -602,6 +607,7 @@ footer.visible {
 .tech-item:hover {
     transform: translateY(-5px);
 }
+
 
 .project-gallery {
     display: grid;
