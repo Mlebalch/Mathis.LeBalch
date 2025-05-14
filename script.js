@@ -86,6 +86,7 @@ let startY;
 let startScrollY;
 
 document.addEventListener('DOMContentLoaded', () => {
+
     const cursor = document.createElement('div');
     cursor.className = 'custom-cursor';
     document.body.appendChild(cursor);
@@ -144,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, {threshold: 0.1});
 
     document.querySelectorAll('section h2').forEach(title => titleObserver.observe(title));
-    document.querySelectorAll('.project-card, .skill-item, footer, section').forEach(el => elementObserver.observe(el));
+    document.querySelectorAll('.project-card, .skill-item, footer, section, .contact-form').forEach(el => elementObserver.observe(el));
     document.querySelectorAll('.timeline-item').forEach(el => elementObserver.observe(el));
 });
 

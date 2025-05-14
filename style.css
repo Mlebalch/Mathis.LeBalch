@@ -97,6 +97,7 @@ body::before {
     pointer-events: none;
 }
 
+
 /* Navigation */
 nav {
     position: fixed;
@@ -926,4 +927,13 @@ img {
     flex-wrap: wrap;
     justify-content: center;
     gap: 0.5rem;
+}
+.contact-form {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.contact-form.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
