@@ -499,6 +499,9 @@ footer.visible {
     .nav-links.active {
         left: 0;
     }
+    .google_translate_element{
+        display: none;
+    }
 
     .project-grid {
         grid-template-columns: 1fr;
