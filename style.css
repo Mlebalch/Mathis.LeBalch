@@ -1089,4 +1089,14 @@ img {
     .competence-item {
         border-left-color: var(--primary-color);
     }
+
+}
+a {
+    color: inherit; /* Use the current text color */
+
+}
+
+a:hover {
+    color: var(--secondary-color); /* Change color on hover */
+    text-decoration: none; /* Keep underline removed */
 }

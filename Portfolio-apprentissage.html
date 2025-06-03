@@ -1,51 +1,44 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=MedievalSharp&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-    <meta name="google" content="notranslate">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio d'Apprentissage</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=MedievalSharp&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <meta name="google" content="notranslate" />
     <link rel="icon" href="ressources/hadesIcon.png" />
-
 </head>
 
 <body>
 
 <canvas id="particle-canvas"></canvas>
+
 <nav>
     <div class="nav-container">
-
         <button class="burger-menu" aria-label="Menu">
             <span></span>
             <span></span>
             <span></span>
         </button>
-
-
         <ul class="nav-links">
             <li><a href="index.html">Accueil</a></li>
-            <li><a href="Portfolio-apprentissage.html">Portfolio Apprentissage </a></li>
+            <li><a href="Portfolio-apprentissage.html">Portfolio Apprentissage</a></li>
         </ul>
-
         <div class="nav-controls">
             <div id="google_translate_element"></div>
             <button id="theme-toggle">
                 <i class="fas fa-moon"></i>
             </button>
         </div>
-
         <script>
-            // Chargement conditionnel du script seulement sur desktop
             if (window.innerWidth > 768) {
                 const script = document.createElement('script');
                 script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
                 script.defer = true;
                 document.head.appendChild(script);
-
-                window.googleTranslateElementInit = function() {
+                window.googleTranslateElementInit = function () {
                     new google.translate.TranslateElement(
                         { pageLanguage: 'en' },
                         'google_translate_element'
@@ -56,134 +49,254 @@
     </div>
 </nav>
 
-
-<section id="apprentissage" class="container main-section" >
+<section id="apprentissage" class="container main-section">
     <h2>Portfolio d'Apprentissage</h2>
 
-    <!-- Conteneur des boutons -->
     <div class="competence-buttons">
-        <button class="competence-btn active" data-target="c3">Compétence 3 | Optimiser</button>
-        <button class="competence-btn" data-target="c4">Compétence 4 | Administrer</button>
-        <button class="competence-btn" data-target="c5">Compétence 5 | Conduire un projet</button>
+        <button class="competence-btn active" data-target="parcours1">Parcours 1 : ADMINISTRER</button>
+        <button class="competence-btn" data-target="parcours2">Parcours 2 : GÉRER</button>
+        <button class="competence-btn" data-target="parcours3">Parcours 3 : CONDUIRE</button>
     </div>
 
-    <!-- Contenu des compétences -->
     <div class="competence-content">
-        <!-- Compétence 3 -->
-        <div id="c3" class="competence-section active">
-            <h3>Administrer des systèmes informatiques communicants complexes</h3>
+        <!-- Parcours 1 : ADMINISTRER -->
+        <div id="parcours1" class="competence-section active">
+            <h3>Thématique générale : Déployer des services dans une architecture réseau — sécuriser le système d'information, appliquer les bonnes pratiques, garantir la qualité de service et la continuité d'activité.</h3>
 
-            <div class="competence-item">
-                <h4>CE3.01 | Sécuriser le SI</h4>
-                <p>Lors de la SAE LAMP, j’ai appris à configurer un serveur web sécurisé, notamment avec PHP et MySQL, en mettant en place des droits d’accès sur la machine virtuelle. .</p>
+            <div class="ce-section">
+                <h4>1.1. Compétences d'Exigence (CE)</h4>
+                <ul>
+                    <li><strong>CE3.01</strong>: Sécuriser le système d'information</li>
+                    <li><strong>CE3.03</strong>: Appliquer les normes en vigueur et les bonnes pratiques architecturales et de sécurité</li>
+                    <li><strong>CE3.02</strong>: Offrir une qualité de service optimale</li>
+                    <li><strong>CE3.04</strong>: Assurer la continuité d'activité</li>
+                </ul>
             </div>
 
-            <div class="competence-item">
-                <h4>CE3.02 | Offrir une qualité de service optimale</h4>
-                <p>Lors de la Code Game Jam, j’ai programmé un jeu en C avec mon équipe, ce qui m’a forcé à optimiser le code pour assurer de bonnes performances dans un temps très réduit.</p>
-            </div>
-            <h3> Composantes essentielles </h3>
+            <div class="ac-section">
+                <h4>1.2. Activités Constitutives (AC) et projets illustratifs</h4>
 
-            <div class="competence-item">
-                <h4>AC2 | Utiliser des serveurs et des services virtualisés</h4>
-                <p>Dans la SAE où nous avons installé un environnement de développement web (LAMP), j’ai utilisé une machine virtuelle pour déployer les services requis.</p>
-            </div>
-            <div class="competence-item">
-                <h4>AC3 | Sécuriser les services et données d’un système</h4>
-                <p>L’installation manuelle des composants et la configuration fine (droits utilisateurs, pare-feu) m’ont permis d’acquérir des notions de sécurisation de services.</p>
+                <div class="competence-item">
+                    <h5>AC 1 : Concevoir et développer des applications communicantes</h5>
+                    <h6>Projet : Tricount – Application de calcule de dette </h6>
+                    <p><strong>Contexte :</strong> Application Web full-stack pour automatiser le calcule de dette entre amis </p>
+                    <p><strong>Rôle et réalisations :</strong></p>
+                    <ul>
+                        <li>Modélisation de la base de données MySQL (schéma Entité-Relation normalisé)</li>
+                        <li>Développement d'API REST en PHP avec requêtes préparées</li>
+                        <li>Interface client avec Ajax et notifications visuelles</li>
+                    </ul>
+                    <p><strong>Apports :</strong> Maîtrise des échanges client-serveur, validation des données.</p>
+                </div>
+
+                <div class="competence-item">
+                    <h5>AC 2 : Utiliser des serveurs et des services réseau virtualisés</h5>
+                    <h6>Projet : <a href="https://drive.google.com/file/d/1ye8JZVoVRadiDuUYmUuwASAihuw6WRlp/view?usp=sharing">LAMP</a>  / <a href="https://docs.google.com/document/d/14zhrqtJLJ1Hmk9K2NX2lwhr8Gfe1rBUJjJvYln8cui0/edit?tab=t.0#heading=h.zb09m7e1raxu">TP Virtualisation </a></h6>
+                    <p><strong>Contexte :</strong> Déploiement d'un serveur LAMP </p>
+                    <p><strong>Rôle et réalisations :</strong></p>
+                    <ul>
+                        <li>Configuration hyper-V / VM Ubuntu avec pile LAMP</li>
+                        <li>Installation des serveurs</li>
+                        <li>Conteneurisation  avec Docker</li>
+                    </ul>
+                    <p><strong>Apports :</strong> Maîtrise des environnements virtualisés, sécurisation des services.</p>
+                </div>
+
+                <div class="competence-item">
+                    <h5>AC 3 : Sécuriser les services et données d'un système</h5>
+                    <h6>Projet : Code Game Jam 2023 – Sécurisation des échanges réseau</h6>
+                    <p><strong>Contexte :</strong> Développement d'un jeu multijoueur avec communication par sockets.</p>
+                    <p><strong>Rôle et réalisations :</strong></p>
+                    <ul>
+                        <li>Hashage SHA-256 des mots de passe</li>
+                        <li>Vérification des paquets entrants</li>
+                    </ul>
+                    <p><strong>Apports :</strong> Protection contre les injections, gestion des pare-feux, sécurisation des communications temps réel.</p>
+                </div>
             </div>
 
         </div>
 
-        <!-- Compétence 4 -->
-        <div id="c4" class="competence-section">
-            <h3>Gérer des données de l'information</h3>
+        <!-- Parcours 2 : GÉRER -->
+        <div id="parcours2" class="competence-section">
+            <h3>Thématique générale : Optimiser une base de données, interagir avec une application et mettre en œuvre la sécurité des données.</h3>
 
-            <div class="competence-item">
-                <h4>CE4.01 | Respect des données personnelles</h4>
-                <p>Dans le projet CapyNote, j’ai manipulé les notes d’étudiants, ce qui m’a sensibilisé à la confidentialité et au traitement des données personnelles.</p>
-            </div>
-            <div class="competence-item">
-                <h4>CE4.02 | Enjeux sociétaux et cohérence des données</h4>
-                <p>La base de données créée pour l’application musicale devait être fiable, complète, et cohérente pour répondre aux besoins d’analyse et d’interrogation.</p>
-            </div>
-            <h3> Composantes essentielles </h3>
-            <div class="competence-item">
-                <h4>AC1 | Optimiser les modèles de données</h4>
-                <p>Grâce aux modèles entité-association réalisés pour les projets de base de données (banque et application musicale), j’ai structuré l’information de manière optimale.</p>
-            </div>
-            <div class="competence-item">
-                <h4>AC2 | Assurer la sécurité des données</h4>
-                <p>Les scripts SQL étaient construits avec attention aux contraintes d'intégrité (clés primaires, étrangères) et aux vues restreignant l'accès à certaines informations.</p>
-            </div>
-            <div class="competence-item">
-                <h4>AC4 | Manipuler des données hétérogènes</h4>
-                <p>Lors de CapyNote, nous avons dû intégrer les données de Scodoc dans notre propre système, impliquant un traitement de formats variés et la normalisation des données.</p>
+            <div class="ce-section">
+                <h4>2.1. Compétences d'Exigence (CE)</h4>
+                <ul>
+                    <li><strong>CE4.01</strong>: Respecter les réglementations sur la vie privée (RGPD)</li>
+                    <li><strong>CE4.02</strong>: Prendre en compte les enjeux économiques, sociétaux et écologiques</li>
+                    <li><strong>CE4.03</strong>: S'appuyer sur des bases mathématiques pour garantir la cohérence</li>
+                    <li><strong>CE4.04</strong>: Assurer la cohérence et la qualité des données</li>
+                </ul>
             </div>
 
+            <div class="ac-section">
+                <h4>2.2. Activités Constitutives (AC) et projets illustratifs</h4>
 
-            <!-- Ajouter les autres items de la compétence 4 -->
+                <div class="competence-item">
+                    <h5>AC 1 : Optimiser les modèles de données de l'entreprise</h5>
+                    <h6>Projet : CapyNote – Modélisation et optimisation SQL</h6>
+                    <p><strong>Contexte :</strong> Gestion de données étudiantes à grande échelle.</p>
+                    <p><strong>Rôle et réalisations :</strong></p>
+                    <ul>
+                        <li>Conception de schéma Entité-Relation normalisé</li>
+                        <li>Indexation avancée et partitionnement par année</li>
+                        <li>Création de vues matérialisées et procédures stockées</li>
+                    </ul>
+                    <p><strong>Apports :</strong> Optimisation des performances, gestion des grands volumes de données.</p>
+                </div>
+
+                <div class="competence-item">
+                    <h5>AC 2 : Assurer la confidentialité des données</h5>
+                    <h6>Projet : CapyNote – Sécurisation des accès et chiffrement</h6>
+                    <p><strong>Contexte :</strong> Protection des données sensibles selon RGPD.</p>
+                    <p><strong>Rôle et réalisations :</strong></p>
+                    <ul>
+                        <li>Chiffrement des données des fichiers de note</li>
+                        <li>Hashage  des mots de passe</li>
+                        <li>Gestion des rôles et permissions</li>
+                        <li>Mise en réflection du droit à l'oubli</li>
+                    </ul>
+                    <p><strong>Apports :</strong> Conformité RGPD, sécurisation des accès, gestion éthique des données.</p>
+                </div>
+
+                <div class="competence-item">
+                    <h5>AC 3 : Organiser la restitution de données</h5>
+                    <h6>Projet : CapyNote – Tableaux de bord et exports PDF/CSV</h6>
+                    <p><strong>Contexte :</strong> Visualisation des données pour les décisionnaires.</p>
+                    <p><strong>Rôle et réalisations :</strong></p>
+                    <ul>
+                        <li>Tableaux interactifs avec DataTables.js</li>
+                        <li>Génération de rapports PDF </li>
+                        <li>Visualisations avec Chart.js</li>
+                    </ul>
+                    <p><strong>Apports :</strong> Restitution efficace des données, support à la prise de décision.</p>
+                </div>
+
+                <div class="competence-item">
+                    <h5>AC 4 : Manipuler des données hétérogènes</h5>
+                    <h6>Projet : Base de Données CapyNote </h6>
+                    <p><strong>Contexte :</strong> Intégration de sources multiples (CSV, SQL, Excel).</p>
+                    <p><strong>Rôle et réalisations :</strong></p>
+                    <ul>
+                        <li>Nettoyage  des données</li>
+                        <li>Conception de schéma relationnel</li>
+                        <li>Implémentation de triggers et procédures stockées</li>
+                        <li>Optimisation par indexation et partitionnement</li>
+                    </ul>
+                    <p><strong>Apports :</strong> Gestion de données complexes, garantie de cohérence et qualité des insertions.</p>
+                </div>
+            </div>
+
+            <div class="mise-en-perspective">
+                <h4>2.3. Mise en perspective des CE et AC avec les projets</h4>
+                <ul>
+                    <li><strong>CE4.01 :</strong> Consentement RGPD et droit à l'oubli (CapyNote)</li>
+                    <li><strong>CE4.02 :</strong> Analyse coût/empreinte écologique des solutions de stockage</li>
+                    <li><strong>CE4.03 :</strong> Vérification des cardinalités et contraintes métier</li>
+                    <li><strong>CE4.04 :</strong> Contraintes d'intégrité et triggers de validation</li>
+                </ul>
+            </div>
         </div>
 
-        <!-- Compétence 5 -->
-        <div id="c5" class="competence-section">
-            <h3> Participer à la conception et à la mise en œuvre d’un projet système d’information</h3>
+        <!-- Parcours 3 : CONDUIRE -->
+        <div id="parcours3" class="competence-section">
+            <h3>Thématique générale : Appliquer une démarche de suivi de projet en fonction des besoins métiers, piloter en mode Agile, respecter les règles juridiques et adopter une gestion éthique et responsable.</h3>
 
-            <div class="competence-item">
-                <h4>CE5.01 | Communiquer avec les acteurs du projet</h4>
-                <p>Lors de la Nuit de l’Info, la communication dans l’équipe était essentielle pour se répartir efficacement les tâches sous pression.</p>
-            </div>
-            <div class="competence-item">
-                <h4>CE5.02 | Respecter les règles et normes</h4>
-                <p>Dans le projet CapyNote, nous avons suivi les normes de développement (versionnage Git, structure MVC PHP) et respecté les contraintes du client (IUT).</p>
-            </div>
-
-            <h3> Composantes essentielles </h3>
-            <div class="competence-item">
-                <h4>AC1 | Identifier les processus présents dans une organisation</h4>
-                <p>CapyNote partait d’un besoin réel de l’IUT pour fluidifier le traitement des poursuites d’études, ce qui m’a permis d’analyser un processus métier existant.</p>
+            <div class="ce-section">
+                <h4>3.1. Compétences d'Exigence (CE)</h4>
+                <ul>
+                    <li><strong>CE5.04</strong>: Adopter une démarche proactive, créative et critique</li>
+                    <li><strong>CE5.02</strong>: Respecter les règles juridiques et les normes</li>
+                    <li><strong>CE5.01</strong>: Communiquer efficacement</li>
+                    <li><strong>CE5.03</strong>: Sensibiliser à une gestion éthique et responsable</li>
+                </ul>
             </div>
 
-            <div class="competence-item">
-                <h4>AC3 | Identifier les critères de faisabilité</h4>
-                <p>Lors du projet "Train", nous avons dû choisir les fonctionnalités à implémenter selon le temps et les compétences disponibles, en évaluant la complexité.</p>
+            <div class="ac-section">
+                <h4>3.2. Activités Constitutives (AC) et projets illustratifs</h4>
+
+                <div class="competence-item">
+                    <h5>AC 1 : Identifier les processus dans une organisation</h5>
+                    <h6>Projet : Jeu "Train" – Analyse des processus métier</h6>
+                    <p><strong>Contexte :</strong> Numérisation d'un jeu de plateau avec analyse des règles.</p>
+                    <p><strong>Rôle et réalisations :</strong></p>
+                    <ul>
+                        <li>Diagrammes d'activité UML</li>
+                        <li>Spécification fonctionnelle détaillée</li>
+                        <li>Tests d'accessibilité et d'ergonomie</li>
+                    </ul>
+                    <p><strong>Apports :</strong> Formalisation des processus métier, adaptation aux besoins utilisateurs.</p>
+                </div>
+
+                <div class="competence-item">
+                    <h5>AC 2 : Formaliser les besoins du client</h5>
+                    <h6>Projet : Nuit de l'Info 2024 – Expression des besoins</h6>
+                    <p><strong>Contexte :</strong> Développement d'application en 12 heures.</p>
+                    <p><strong>Rôle et réalisations :</strong></p>
+                    <ul>
+                        <li>Priorisation MoSCoW des fonctionnalités</li>
+                        <li>Rédaction de cahier des charges express</li>
+                        <li>Découpage Agile en user stories</li>
+                    </ul>
+                    <p><strong>Apports :</strong> Gestion de projet en contexte contraint, communication ciblée.</p>
+                </div>
+
+                <div class="competence-item">
+                    <h5>AC 3 : Identifier les critères de faisabilité</h5>
+                    <h6>Projet : CapyNote – Étude de faisabilité</h6>
+                    <p><strong>Contexte :</strong> Évaluation des technologies et risques avant développement.</p>
+                    <p><strong>Rôle et réalisations :</strong></p>
+                    <ul>
+                        <li>Comparatif technique (PHP, MySQL, JS)</li>
+                        <li>Estimation des temps (méthode PERT)</li>
+                        <li>Analyse des risques et plans de secours</li>
+                        <li>Planning prévisionnel sous Gantt</li>
+                    </ul>
+                    <p><strong>Apports :</strong> Capacité à anticiper les défis techniques et organisationnels.</p>
+                </div>
+
+                <div class="competence-item">
+                    <h5>AC 4 : Mettre en œuvre une démarche de suivi</h5>
+                    <h6>Projet : Projet CapyNote – Coordination Agile</h6>
+                    <p><strong>Contexte :</strong> Conception de base de données sur 6 semaines.</p>
+                    <p><strong>Rôle et réalisations :</strong></p>
+                    <ul>
+                        <li>Mise en place d'un Trello</li>
+                        <li>Réunions hebdomadaire </li>
+                        <li>Revues de sprint et documentation</li>
+                        <li>Suivi par burndown chart</li>
+                    </ul>
+                    <p><strong>Apports :</strong> Pilotage d'équipe, gestion des délais, documentation collaborative.</p>
+                </div>
             </div>
 
-            <div class="competence-item">
-                <h4>AC4 | Définir une démarche de suivi de projet</h4>
-                <p>Dans la SAE "organisation de festival", nous avons utilisé un tableau de répartition des tâches et un budget prévisionnel, simulant une gestion de projet réelle.</p>
+            <div class="mise-en-perspective">
+                <h4>3.3. Mise en perspective des CE et AC avec les projets</h4>
+                <ul>
+                    <li><strong>CE5.04 :</strong> Proposition de solutions alternatives sous contraintes</li>
+                    <li><strong>CE5.02 :</strong> Respect des licences logicielles et normes d'accessibilité</li>
+                    <li><strong>CE5.01 :</strong> Partage de documentation via Git/Drive</li>
+                    <li><strong>CE5.03 :</strong> Choix d'hébergement écologique et gestion inclusive</li>
+                </ul>
             </div>
-
         </div>
     </div>
 </section>
 
 <script>
-    // Gestion des boutons de compétences
     document.querySelectorAll('.competence-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            // Retirer la classe active de tous les boutons et sections
-            document.querySelectorAll('.competence-btn, .competence-section').forEach(el => {
-                el.classList.remove('active');
-            });
-
-            // Ajouter active au bouton cliqué
+        btn.addEventListener('click', function () {
+            document.querySelectorAll('.competence-btn, .competence-section').forEach(el => el.classList.remove('active'));
             this.classList.add('active');
-
-            // Afficher la section correspondante
-            const target = this.dataset.target;
-            document.getElementById(target).classList.add('active');
+            document.getElementById(this.dataset.target).classList.add('active');
         });
     });
 </script>
 
-
 <script defer src="script.js"></script>
 
-
-
-</body>
-<!-- Footer -->
 <footer>
     <div class="container">
         <div class="footer-content">
@@ -196,4 +309,6 @@
         </div>
     </div>
 </footer>
+
+</body>
 </html>
