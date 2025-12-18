@@ -629,6 +629,7 @@ footer.visible {
     animation: float 4s ease-in-out infinite;
     filter: grayscale(20%) contrast(110%);
     transition: all 0.3s ease;
+    object-fit: cover;
 }
 
 .profile-pic:hover {
