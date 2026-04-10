@@ -1,117 +1,331 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu Train — Mathis Le Balch</title>
+    <meta name="description" content="Projet Train — Jeu de société numérique JavaFX">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .project-page {
+            max-width: 750px;
+            margin: 20px auto;
+            padding: 0 15px;
+            position: relative;
+            z-index: 2;
+        }
 
-  <title>Jeu "Train" - Mathis LE BALCH</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=MedievalSharp&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(90deg, #000080, #1084d0);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 4px;
+            font-weight: bold;
+            text-decoration: none;
+            margin-bottom: 12px;
+            font-size: 0.85rem;
+            transition: opacity 0.2s;
+        }
 
+        .back-btn:hover {
+            opacity: 0.85;
+            color: white;
+        }
+
+        .proj-hero {
+            display: flex;
+            gap: 18px;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+
+        .proj-hero img {
+            width: 90px;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid var(--theme-accent-color);
+        }
+
+        .proj-hero-text h1 {
+            font-size: 1.6rem;
+            color: var(--theme-accent-color);
+            margin-bottom: 4px;
+        }
+
+        .proj-hero-text .meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .meta-chip {
+            background: rgba(148, 39, 146, 0.1);
+            border: 1px solid var(--theme-accent-color);
+            color: var(--theme-accent-color);
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+        }
+
+        .proj-section {
+            margin-bottom: 10px;
+        }
+
+        .proj-section h2 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: var(--theme-accent-color);
+            border-bottom: 1px solid var(--theme-border-color);
+            padding-bottom: 4px;
+        }
+
+        .tech-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .tech-chip {
+            background: var(--theme-link-color);
+            color: white;
+            padding: 3px 12px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .achieve-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 8px;
+        }
+
+        .achieve-card {
+            background: rgba(255, 247, 255, 0.8);
+            border: 1px solid var(--theme-border-color);
+            border-radius: 6px;
+            padding: 10px;
+            font-size: 0.85rem;
+        }
+
+        .achieve-card strong {
+            display: block;
+            color: var(--theme-accent-color);
+            margin-bottom: 4px;
+        }
+
+        .desc-text {
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .screenshot {
+            width: 100%;
+            border-radius: 8px;
+            border: 2px solid var(--theme-border-color);
+            margin-top: 10px;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #942792, #4e20ff);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1rem;
+            box-shadow: 0 0 15px rgba(148, 39, 146, 0.4);
+            transition: box-shadow 0.3s, transform 0.2s;
+            margin-top: 8px;
+        }
+
+        .download-btn:hover {
+            box-shadow: 0 0 25px rgba(148, 39, 146, 0.7);
+            transform: translateY(-2px);
+            color: white;
+        }
+
+        .steps-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .steps-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 8px 10px;
+            margin-bottom: 6px;
+            background: rgba(255, 247, 255, 0.7);
+            border-radius: 6px;
+            border-left: 3px solid var(--theme-link-color);
+            font-size: 0.85rem;
+        }
+
+        .steps-list li .step-num {
+            background: var(--theme-link-color);
+            color: white;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.78rem;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .alert-box {
+            background: rgba(207, 114, 28, 0.1);
+            border: 1px solid #cf721c;
+            border-radius: 6px;
+            padding: 10px 14px;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+        }
+
+        code {
+            background: rgba(0, 0, 0, 0.08);
+            padding: 1px 5px;
+            border-radius: 3px;
+            font-family: monospace;
+            font-size: 0.85em;
+        }
+    </style>
 </head>
+
 <body>
+    <canvas id="particle-canvas"></canvas>
+    <div class="custom-cursor"></div>
 
-<canvas id="particle-canvas"></canvas>
+    <div class="project-page">
+        <a href="index.html" class="back-btn">← Retour au Portfolio</a>
 
-<nav>
-  <div class="nav-container">
+        <div class="win-window">
+            <div class="win-titlebar">
+                <span>🚂 Train.exe — Dossier Projet</span>
+                <div class="win-controls"><span>—</span><span>☐</span><span>X</span></div>
+            </div>
+            <div class="win-content glossy">
+                <div class="proj-hero">
+                    <img src="ressources/trainsPlateaux.png" alt="Train">
+                    <div class="proj-hero-text">
+                        <h1>Jeu "Train" Numérique</h1>
+                        <div class="meta">
+                            <span class="meta-chip"><i class="fas fa-calendar"></i> 2023</span>
+                            <span class="meta-chip"><i class="fas fa-users"></i> Équipe de 2</span>
+                            <span class="meta-chip">Interface Graphique MVC</span>
+                            <span class="meta-chip">JavaFX</span>
+                        </div>
+                    </div>
+                </div>
 
-    <button class="burger-menu" aria-label="Menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+                <div class="proj-section">
+                    <h2>Description</h2>
+                    <p class="desc-text">
+                        Adaptation numérique d'un <b>jeu de société de stratégie ferroviaire</b> développée en Java avec
+                        JavaFX.
+                        Le projet met en œuvre une architecture <b>MVC</b> complète avec une interface graphique
+                        interactive.
+                        Les joueurs posent des rails, construisent des connexions entre villes et marquent des points en
+                        complétant des trajets.
+                    </p>
+                </div>
 
+                <div class="proj-section">
+                    <h2>Technologies utilisées</h2>
+                    <div class="tech-grid">
+                        <span class="tech-chip">Java 17</span>
+                        <span class="tech-chip">JavaFX 20</span>
+                        <span class="tech-chip">Maven</span>
+                        <span class="tech-chip">Pattern MVC</span>
+                    </div>
+                </div>
 
+                <div class="proj-section">
+                    <h2>⬇️ Télécharger et lancer</h2>
+                    <div class="alert-box">
+                        ⚠️ Ce jeu est une application <b>Java Desktop (JavaFX)</b>. Il ne peut pas tourner directement
+                        dans le navigateur.
+                        Tu dois avoir <b>Java 17+</b> et <b>Maven</b> installés sur ton PC.
+                    </div>
 
-    <ul class="nav-links">
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="capynote.html">Projets Suivant</a></li>
-    </ul>
+                    <a href="ressources/trains-ihm.zip" download class="download-btn">
+                        <i class="fas fa-download"></i> Télécharger le code source (.zip, ~51 MB)
+                    </a>
 
-    <div class="nav-controls">
-      <div id="google_translate_element"></div>
-      <button id="theme-toggle">
-        <i class="fas fa-moon"></i>
-      </button>
-    </div>
+                    <br><br>
+                    <p style="font-weight:bold; margin-bottom:8px;">Comment lancer le projet :</p>
+                    <ul class="steps-list">
+                        <li><span class="step-num">1</span><span>Extraire le <code>.zip</code> dans un dossier de ton
+                                choix</span></li>
+                        <li><span class="step-num">2</span><span>Ouvrir le projet dans <b>IntelliJ IDEA</b> (recommandé)
+                                ou VS Code + Extension Java</span></li>
+                        <li><span class="step-num">3</span><span>IntelliJ détecte automatiquement le
+                                <code>pom.xml</code> Maven → laisser télécharger les dépendances</span></li>
+                        <li><span class="step-num">4</span><span>Lancer la classe principale :
+                                <code>fr.umontpellier.iut.trainsJavaFX.TrainsIHM</code></span></li>
+                        <li><span class="step-num">5</span>
+                            <span>Ou en ligne de commande dans le dossier du projet :<br>
+                                <code>mvn javafx:run</code>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
 
-    <script>
-      // Chargement conditionnel du script seulement sur desktop
-      if (window.innerWidth > 768) {
-        const script = document.createElement('script');
-        script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
-        script.defer = true;
-        document.head.appendChild(script);
+                <div class="proj-section">
+                    <h2>Points clés du projet</h2>
+                    <div class="achieve-grid">
+                        <div class="achieve-card">
+                            <strong>🎮 Jeu Complet</strong>
+                            Système de tours, plateau, gestion des scores
+                        </div>
+                        <div class="achieve-card">
+                            <strong>🏗️ Architecture MVC</strong>
+                            Séparation claire Modèle / Vue / Contrôleur
+                        </div>
+                        <div class="achieve-card">
+                            <strong>🖼️ Interface JavaFX</strong>
+                            UI fluide et intuitive en FXML
+                        </div>
+                        <div class="achieve-card">
+                            <strong>👥 Multijoueur Local</strong>
+                            Tour par tour jusqu'à 4 joueurs
+                        </div>
+                    </div>
+                </div>
 
-        window.googleTranslateElementInit = function() {
-          new google.translate.TranslateElement(
-                  { pageLanguage: 'en' },
-                  'google_translate_element'
-          );
-        };
-      }
-    </script>
-  </div>
-</nav>
-
-
-<div class="project-container">
-  <div class="project-header">
-    <h1>Jeu de Société "Train"</h1>
-    <div class="project-meta">
-      <span class="meta-item"><i class="fas fa-calendar"></i> 2023</span>
-      <span class="meta-item"><i class="fas fa-users"></i> 2</span>
-      <span class="meta-item"><i class="fas fa-tags"></i> Jeu de stratégie</span>
-    </div>
-  </div>
-
-  <div class="project-content">
-
-
-
-  <div class="project-section">
-    <h2><i class="fas fa-wrench"></i> Technologies</h2>
-    <div class="tech-stack">
-      <div class="tech-item">Java</div>
-      <div class="tech-item">Java FX </div>
-    </div>
-  </div>
-
-
-    <div class="project-section">
-      <h2><i class="fas fa-trophy"></i> Réalisations</h2>
-      <div class="achievements-grid">
-        <div class="achievement-card">
-         <h3>Création d'un jeu de société</h3>
-            <p> Système de tours stratégiques</p>
+                <img src="ressources/trainsPlateaux.png" alt="Capture du plateau de jeu Train" class="screenshot">
+            </div>
         </div>
-        <div class="achievement-card">
-        <h3>User experience</h3>
-            <p>Création d'une interface utilisateur fluide et compréhensible </p>
+
+        <div class="win-window" style="margin-top:10px;">
+            <div class="win-titlebar">
+                <span>Navigation Projets</span>
+                <div class="win-controls"><span>—</span><span>☐</span><span>X</span></div>
+            </div>
+            <div class="win-content glossy"
+                style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;">
+                <a href="nuit-info.html" class="back-btn"
+                    style="margin:0; background: linear-gradient(90deg,#4e20ff,#942792);">← Nuit de l'Info</a>
+                <a href="capynote.html" class="back-btn"
+                    style="margin:0; background: linear-gradient(90deg,#942792,#4e20ff);">CapyNote →</a>
+            </div>
         </div>
-      </div>
     </div>
-</div>
-</div>
 
-
-
-
-<script defer src="script.js"></script>
-
+    <script defer src="script.js"></script>
 </body>
-<footer>
-  <div class="container">
-    <div class="footer-content">
-      <p>© 2024 Le Balch. Tous droits réservés</p>
-      <div class="social-links">
-        <a href="https://github.com/Mlebalch"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/mathis-le-balch-3a6778255/"><i class="fab fa-linkedin"></i></a>
-        <a href="https://rikikirito.itch.io/"><i class="fab fa-itch-io"></i></a>
-      </div>
-    </div>
-  </div>
-</footer>
+
 </html>
