@@ -1,293 +1,267 @@
-
-
-
-
-
-// Gestion du menu burger
-const burgerMenu = document.querySelector('.burger-menu');
-const navLinks = document.querySelector('.nav-links');
-let isOverNav = false;
-
-// Gestion de l'état de la navigation
-document.querySelectorAll('nav, nav *').forEach(element => {
-    element.addEventListener('mouseenter', () => {
-        isOverNav = true;
-        document.querySelector('.custom-cursor').classList.add('hidden');
-        document.body.style.cursor = 'auto';
-    });
-
-    element.addEventListener('mouseleave', (e) => {
-        if (!e.relatedTarget || !e.relatedTarget.closest('nav')) {
-            isOverNav = false;
-            document.querySelector('.custom-cursor').classList.remove( 'hidden');
-            document.body.style.cursor = 'none';
-        }
-    });
-});
-
-burgerMenu.addEventListener('click', () => {
-    burgerMenu.classList.toggle('active');
-    navLinks.classList.toggle('active');
-});
-
-
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        burgerMenu.classList.remove('active');
-        navLinks.classList.remove('active');
-    });
-});
-
-
-document.addEventListener('click', (e) => {
-    const isBurger = e.target.closest('.burger-menu');
-    const isNavLink = e.target.closest('.nav-links');
-
-    if (!isBurger && !isNavLink) {
-        burgerMenu.classList.remove('active');
-        navLinks.classList.remove('active');
-    }
-});
-
-
-
-
-
-
-
-// Redimensionnement fenêtre
-
-window.addEventListener('resize', () => {
-    if (window.innerWidth > 768) {
-        burgerMenu.classList.remove('active');
-        navLinks.classList.remove('active');
-    }
-});
-
-
-
-
-
-
-
-
-
-// Gestion du thème
-const themeToggle = document.getElementById('theme-toggle');
-let currentTheme = localStorage.getItem('theme') || 'dark';
-let particleColors;
-
-
-function applyTheme() {
-    document.documentElement.setAttribute('data-theme', currentTheme);
-    themeToggle.innerHTML = currentTheme === 'dark'
-        ? '<i class="fas fa-moon"></i>'
-        : '<i class="fas fa-sun"></i>';
-
-
-    particleColors = currentTheme === 'dark'
-        ? ['#c53b23', '#e9c46a', '#fff5e6', '#7a2a1a']
-        : ['#2a5a7c', '#c53b23', '#2a1c1a', '#f0e6d6'];
-
-    particles = [];
-    init();
+// Menu Toggle
+const burger = document.getElementById('mobile-menu-toggle');
+const menu = document.getElementById('menutd');
+if(burger && menu) {
+    burger.addEventListener('click', () => menu.classList.toggle('active'));
 }
 
-themeToggle.addEventListener('click', () => {
-    currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    localStorage.setItem('theme', currentTheme);
-    applyTheme();
+// Custom Cursor
+const cursor = document.querySelector('.custom-cursor');
+let lastStarTime = 0;
+document.addEventListener('mousemove', (e) => {
+    if(cursor) {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+    }
+
+    // Easter Egg: Cursor Trails
+    const now = Date.now();
+    if(now - lastStarTime > 50) {
+        lastStarTime = now;
+        const trail = document.createElement('div');
+        trail.style.position = 'fixed';
+        trail.style.left = e.clientX + 'px';
+        trail.style.top = e.clientY + 'px';
+        trail.style.width = '5px';
+        trail.style.height = '5px';
+        trail.style.background = '#942792';
+        trail.style.borderRadius = '50%';
+        trail.style.pointerEvents = 'none';
+        trail.style.zIndex = '9998';
+        trail.style.boxShadow = '0 0 8px #4e20ff';
+        trail.style.transition = 'all 0.6s ease-out';
+        document.body.appendChild(trail);
+        
+        // Start animation next frame
+        setTimeout(() => {
+            trail.style.transform = `translate(${(Math.random() - 0.5) * 40}px, ${Math.random() * 40}px) scale(0)`;
+            trail.style.opacity = '0';
+        }, 10);
+        
+        setTimeout(() => trail.remove(), 600);
+    }
 });
 
+// Easter Egg: Secret click (Name or Butterfly)
+const secretTrigger = document.getElementById('secret-trigger');
+const butterflyTrigger = document.querySelector('.easter-butterfly');
+function toggleFever() {
+    document.body.classList.toggle('vector-fever');
+}
+if(secretTrigger) secretTrigger.addEventListener('click', toggleFever);
+if(butterflyTrigger) butterflyTrigger.addEventListener('click', toggleFever);
+
+// ==========================================
+// VISITOR COUNTER — Ex33 Digit Display (localStorage)
+// ==========================================
+(function loadEx33Counter() {
+    const display = document.getElementById('ex33-visitor-display');
+    if (!display) return;
+
+    // Increment visit count in localStorage
+    let count = parseInt(localStorage.getItem('mlb_visit_count') || '0', 10);
+    count++;
+    localStorage.setItem('mlb_visit_count', count);
+
+    // Render each digit with Ex33 style
+    const digits = String(count);
+    display.innerHTML = '';
+    for (const digit of digits) {
+        const span = document.createElement('span');
+        span.className = 'ex33-digit';
+        span.textContent = digit;
+        display.appendChild(span);
+    }
+})();
 
 
 
+// ==========================================
+// LAST.FM API INTEGRATION
+// ==========================================
+const API_KEY = "46fc76fb4deb66cbeb9eb1d453a136eb";
+const USERNAME = "noitchi";
+const LASTFM_URL = `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${USERNAME}&api_key=${API_KEY}&format=json&limit=1`;
 
-//mouse
-let mouseX = -1000;
-let mouseY = -1000;
-const mouseRadius = 120;
-const maxForce = 1.2;
-let isDragging = false;
-let startY;
-let startScrollY;
-
-document.addEventListener('DOMContentLoaded', () => {
-
-    const cursor = document.createElement('div');
-    cursor.className = 'custom-cursor';
-    document.body.appendChild(cursor);
-
-    // Gestion du drag
-    document.addEventListener('mousedown', (e) => {
-        if (isOverNav) return;
-        if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
-            isDragging = true;
-            startY = e.clientY;
-            startScrollY = window.scrollY;
-            document.body.classList.add('is-dragging');
-        }
-    });
-
-    document.addEventListener('mousemove', (e) => {
-        if (isOverNav) return;
-        if (!isDragging) return;
-
-        const deltaY = e.clientY - startY;
-        window.scrollTo({
-            top: startScrollY - deltaY * 1.5,
-            behavior: 'instant'
-        });
-    });
-
-    document.addEventListener('mouseup', () => {
-        isDragging = false;
-        document.body.classList.remove('is-dragging');
-    });
-
-    // Animation curseur
-    document.addEventListener('mousemove', (e) => {
-        cursor.style.left = `${e.clientX - 15}px`;
-        cursor.style.top = `${e.clientY - 15}px`;
-    });
-
-    document.addEventListener('mousedown', () => cursor.classList.add('active'));
-    document.addEventListener('mouseup', () => cursor.classList.remove('active'));
-
-
-    //  observateurs
-    const titleObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
+const songNameEl = document.getElementById('songname');
+const artistEl = document.getElementById('artist');
+const albumCoverEl = document.getElementById('albumcover');
+async function fetchLastFm() {
+    try {
+        const response = await fetch(LASTFM_URL);
+        const data = await response.json();
+        const track = data.recenttracks.track[0];
+        
+        if (track) {
+            if (songNameEl) songNameEl.innerHTML = `<span class="gradient-text">${track.name}</span>`;
+            if (artistEl) artistEl.textContent = track.artist['#text'];
+            
+            // Calculate time ago
+            let timeText = "";
+            let timeClass = "";
+            if (track['@attr'] && track['@attr'].nowplaying === 'true') {
+                timeText = "En ce moment 🎧";
+                timeClass = "glow-green";
+            } else if (track.date && track.date.uts) {
+                const diffMins = Math.floor((Date.now() - parseInt(track.date.uts) * 1000) / 60000);
+                if (diffMins < 1) timeText = "À l'instant";
+                else if (diffMins < 60) timeText = `Il y a ${diffMins} min`;
+                else if (diffMins < 1440) timeText = `Il y a ${Math.floor(diffMins/60)} h`;
+                else timeText = `Il y a ${Math.floor(diffMins/1440)} j`;
+                timeClass = "glow-purple";
             }
-        });
-    }, {threshold: 0.1});
-
-
-    const elementObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
+            let timeEl = document.getElementById('music-time');
+            if (!timeEl && artistEl && artistEl.parentNode) {
+                timeEl = document.createElement('div');
+                timeEl.id = 'music-time';
+                timeEl.style.fontSize = '0.75rem';
+                timeEl.style.marginTop = '4px';
+                artistEl.parentNode.appendChild(timeEl);
             }
-        });
-    }, {threshold: 0.1});
-
-    document.querySelectorAll('section h2').forEach(title => titleObserver.observe(title));
-    document.querySelectorAll('.project-card, .skill-item, footer, section, .contact-form').forEach(el => elementObserver.observe(el));
-    document.querySelectorAll('.timeline-item').forEach(el => elementObserver.observe(el));
-});
-
-// Animation formulaire
-const formObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = 1;
-            entry.target.style.transform = 'translateY(0)';
-        } else {
-            entry.target.style.opacity = 0;
-            entry.target.style.transform = 'translateY(30px)';
+            timeEl.className = timeClass;
+            timeEl.textContent = timeText;
+            
+            // Get large image
+            const images = track.image;
+            const lgImage = images.find(img => img.size === 'extralarge') || images.find(img => img.size === 'large') || images[0];
+            if (lgImage && lgImage['#text'] && albumCoverEl) {
+                albumCoverEl.src = lgImage['#text'];
+            }
+            // Update online status based on Last.fm nowplaying
+            const statusEl = document.getElementById('status');
+            if (statusEl) {
+                const isNowPlaying = track['@attr'] && track['@attr'].nowplaying === 'true';
+                if (isNowPlaying) {
+                    statusEl.textContent = 'En Ligne ! 🎧';
+                    statusEl.className = 'status-bounce glow-green';
+                } else {
+                    const diffMins = track.date ? Math.floor((Date.now() - parseInt(track.date.uts) * 1000) / 60000) : 9999;
+                    if (diffMins < 30) {
+                        statusEl.textContent = 'Peut-être là... 👀';
+                        statusEl.className = 'status-bounce glow-yellow';
+                    } else {
+                        statusEl.textContent = 'AFK 💤';
+                        statusEl.className = 'status-bounce glow-purple';
+                    }
+                }
+            }
         }
-    });
-});
-formObserver.observe(document.querySelector('.contact-form'));
+    } catch (e) {
+        console.log("Last.fm error:", e);
+    }
+}
 
 
-// Particules
+// Fetch 
+fetchLastFm();
+// Refresh every 30 seconds
+setInterval(fetchLastFm, 30000);
+
+// ==========================================
+// VECTORBLOOM PARTICLES (Psych/Vector Art)
+// ==========================================
 const canvas = document.getElementById('particle-canvas');
 const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
 
-let particles = [];
-const particleCount = 150;
+function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resize);
+resize();
 
-class Particle {
+const particles = [];
+const PARTICLE_COUNT = 30;
+// Vectorbloom colors: pinks, purples, blues
+const vectorColors = ['#ca8fc9', '#4e20ff', '#942792', '#d050ce'];
+
+class VectorParticle {
     constructor() {
         this.reset();
-        this.color = particleColors[Math.floor(Math.random() * particleColors.length)];
+        this.y = Math.random() * canvas.height;
     }
-
+    
     reset() {
         this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 3 + 1;
-        this.baseSpeedX = (Math.random() - 0.5) * 0.9;
-        this.baseSpeedY = (Math.random() - 0.5) * 0.9;
-        this.speedX = this.baseSpeedX;
-        this.speedY = this.baseSpeedY;
-        this.opacity = Math.random() * 0.6 + 0.2;
+        this.y = canvas.height + 100;
+        this.size = Math.random() * 20 + 10;
+        this.color = vectorColors[Math.floor(Math.random() * vectorColors.length)];
+        this.speedY = -(Math.random() * 1.2 + 0.5);
+        this.rotation = Math.random() * Math.PI * 2;
+        this.rotSpeed = (Math.random() - 0.5) * 0.02;
+        this.opacity = Math.random() * 0.4 + 0.1;
+        // Shape type: 0=circle, 1=star/flower
+        this.type = Math.random() > 0.5 ? 1 : 0; 
     }
-
+    
     update() {
-        if (isOverNav) return;
-
-        const dx = this.x - mouseX;
-        const dy = this.y - mouseY;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-
-        if (distance < mouseRadius && distance > 0) {
-            const force = (mouseRadius - distance) / mouseRadius * maxForce;
-            const angle = Math.atan2(dy, dx);
-            this.speedX = Math.cos(angle) * force * 0.9;
-            this.speedY = Math.sin(angle) * force * 0.9;
-        }
-
-        this.speedX += (this.baseSpeedX - this.speedX) * 0.05;
-        this.speedY += (this.baseSpeedY - this.speedY) * 0.05;
-        this.speedX *= 0.98;
-        this.speedY *= 0.98;
-
-        this.x += this.speedX;
         this.y += this.speedY;
-
-        if (this.x > canvas.width || this.x < 0) this.speedX *= -0.7;
-        if (this.y > canvas.height || this.y < 0) this.speedY *= -0.7;
+        this.rotation += this.rotSpeed;
+        
+        if (this.y < -100) {
+            this.reset();
+        }
     }
+    
+    drawStar(cx, cy, spikes, outerRadius, innerRadius) {
+        let rot = Math.PI / 2 * 3;
+        let x = cx;
+        let y = cy;
+        let step = Math.PI / spikes;
 
+        ctx.beginPath();
+        ctx.moveTo(cx, cy - outerRadius);
+        for (let i = 0; i < spikes; i++) {
+            x = cx + Math.cos(rot) * outerRadius;
+            y = cy + Math.sin(rot) * outerRadius;
+            ctx.lineTo(x, y);
+            rot += step;
+
+            x = cx + Math.cos(rot) * innerRadius;
+            y = cy + Math.sin(rot) * innerRadius;
+            ctx.lineTo(x, y);
+            rot += step;
+        }
+        ctx.lineTo(cx, cy - outerRadius);
+        ctx.closePath();
+        ctx.lineWidth = 1.5;
+        ctx.strokeStyle = this.color;
+        ctx.stroke();
+    }
+    
     draw() {
         ctx.save();
         ctx.globalAlpha = this.opacity;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = this.color;
-        ctx.fill();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.rotation);
+        
+        if (this.type === 0) {
+            ctx.beginPath();
+            ctx.arc(0, 0, this.size, 0, Math.PI * 2);
+            ctx.lineWidth = 1;
+            ctx.strokeStyle = this.color;
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.arc(0, 0, this.size * 0.5, 0, Math.PI * 2);
+            ctx.stroke();
+        } else {
+            this.drawStar(0, 0, 6, this.size, this.size * 0.4);
+        }
+        
         ctx.restore();
     }
 }
 
-function init() {
-    particles = [];
-    for (let i = 0; i < particleCount; i++) {
-        particles.push(new Particle());
-    }
+for(let i=0; i<PARTICLE_COUNT; i++) {
+    particles.push(new VectorParticle());
 }
 
-function animate() {
+function animateParticles() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    particles.forEach(particle => {
-        if (particle.x < -100 || particle.x > canvas.width + 100 ||
-            particle.y < -100 || particle.y > canvas.height + 100) {
-            particle.reset();
-        }
-        particle.update();
-        particle.draw();
-    });
-    requestAnimationFrame(animate);
+    for(let p of particles) {
+        p.update();
+        p.draw();
+    }
+    requestAnimationFrame(animateParticles);
 }
-
-window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-});
-
-document.addEventListener('mousemove', (e) => {
-    const rect = canvas.getBoundingClientRect();
-    mouseX = e.clientX - rect.left;
-    mouseY = e.clientY - rect.top;
-});
-
-// Initialisation
-applyTheme();
-init();
-animate();
+animateParticles();

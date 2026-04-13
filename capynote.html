@@ -1,117 +1,105 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-  <title>CapyNote - Mathis LE BALCH</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=MedievalSharp&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CapyNote — Mathis Le Balch</title>
+    <meta name="description" content="CapyNote — Application de gestion des poursuites d'études PHP/MySQL">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<canvas id="particle-canvas"></canvas>
+    <canvas id="particle-canvas"></canvas>
+    <div class="custom-cursor"></div>
 
-<nav>
-  <div class="nav-container">
+    <div class="project-page">
+        <a href="index.html" class="back-btn">← Retour au Portfolio</a>
 
-    <button class="burger-menu" aria-label="Menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+        <div class="win-window">
+            <div class="win-titlebar">
+                <span>🦫 CapyNote.exe — Dossier Projet</span>
+                <div class="win-controls"><span>—</span><span>☐</span><span>X</span></div>
+            </div>
+            <div class="win-content glossy">
+                <div class="proj-hero">
+                    <img src="ressources/CapyNote.png" alt="CapyNote">
+                    <div class="proj-hero-text">
+                        <h1>CapyNote</h1>
+                        <div class="meta">
+                            <span class="meta-chip"><i class="fas fa-calendar"></i> Oct 2023 – Jan 2024</span>
+                            <span class="meta-chip"><i class="fas fa-users"></i> Équipe de 4</span>
+                            <span class="meta-chip">Gestion des Poursuites d'Études</span>
+                            <span class="meta-chip">PHP/MySQL</span>
+                        </div>
+                    </div>
+                </div>
 
+                <div class="proj-section">
+                    <h2>Description</h2>
+                    <p class="desc-text">
+                        <b>CapyNote</b> est une application web de gestion des dossiers de poursuite d'études développée
+                        pour simplifier
+                        le suivi administratif des étudiants en fin de cursus. L'application permet aux étudiants de
+                        soumettre
+                        leurs candidatures, aux responsables de les traiter et de générer des rapports de suivi.
+                        Le projet a été réalisé en équipe de 4 sur 3 mois avec une méthodologie agile.
+                    </p>
+                </div>
 
-    <ul class="nav-links">
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="nuit-info.html">Projets Suivant</a></li>
-    </ul>
+                <div class="proj-section">
+                    <h2>Technologies utilisées</h2>
+                    <div class="tech-grid">
+                        <span class="tech-chip">PHP 8.2</span>
+                        <span class="tech-chip">MySQL</span>
+                        <span class="tech-chip">HTML5 / CSS3</span>
+                        <span class="tech-chip">JavaScript</span>
+                        <span class="tech-chip">TailwindCSS</span>
+                        <span class="tech-chip">Docker</span>
+                    </div>
+                </div>
 
-    <div class="nav-controls">
-      <div id="google_translate_element"></div>
-      <button id="theme-toggle">
-        <i class="fas fa-moon"></i>
-      </button>
+                <div class="proj-section">
+                    <h2>Fonctionnalités clés</h2>
+                    <div class="achieve-grid">
+                        <div class="achieve-card">
+                            <strong>📋 Gestion des Dossiers</strong>
+                            Soumission, suivi et validation des candidatures
+                        </div>
+                        <div class="achieve-card">
+                            <strong>👤 Multi-Rôles</strong>
+                            Étudiants, responsables, administrateurs
+                        </div>
+                        <div class="achieve-card">
+                            <strong>📊 Tableaux de Bord</strong>
+                            Visualisation des statistiques et états
+                        </div>
+                        <div class="achieve-card">
+                            <strong>🐳 Docker</strong>
+                            Environnement conteneurisé pour le déploiement
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="win-window" style="margin-top:10px;">
+            <div class="win-titlebar">
+                <span>Navigation Projets</span>
+                <div class="win-controls"><span>—</span><span>☐</span><span>X</span></div>
+            </div>
+            <div class="win-content glossy"
+                style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;">
+                <a href="train.html" class="back-btn"
+                    style="margin:0; background: linear-gradient(90deg,#4e20ff,#942792);">← Train</a>
+                <a href="nuit-info.html" class="back-btn"
+                    style="margin:0; background: linear-gradient(90deg,#942792,#4e20ff);">Nuit de l'Info →</a>
+            </div>
+        </div>
     </div>
 
-    <script>
-      // Chargement conditionnel du script seulement sur desktop
-      if (window.innerWidth > 768) {
-        const script = document.createElement('script');
-        script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
-        script.defer = true;
-        document.head.appendChild(script);
-
-        window.googleTranslateElementInit = function() {
-          new google.translate.TranslateElement(
-                  { pageLanguage: 'en' },
-                  'google_translate_element'
-          );
-        };
-      }
-    </script>
-  </div>
-</nav>
-
-<div class="project-container">
-  <div class="project-header">
-    <h1>CapyNote 2024</h1>
-    <div class="project-meta">
-      <span class="meta-item"><i class="fas fa-calendar"></i> Octobre 2023 - Janvier 2024</span>
-      <span class="meta-item"><i class="fas fa-users"></i> 4</span>
-      <span class="meta-item"><i class="fas fa-tags"></i>Optimisation de l'efficacité de la gestion de note</span>
-    </div>
-  </div>
-
-
-  <div class="project-content">
-    <div class="project-section">
-      <h2><i class="fas fa-wrench"></i> Technologies</h2>
-      <div class="tech-stack">
-        <div class="tech-item">PHP 8.2</div>
-        <div class="tech-item">JavaScript</div>
-        <div class="tech-item">HTML5</div>
-        <div class="tech-item">MySQL</div>
-        <div class="tech-item">CSS3</div>
-        <div class="tech-item">Tailwind</div>
-      </div>
-    </div>
-      </div>
-  <div class="project-section">
-    <h2><i class="fas fa-trophy"></i> Réalisations</h2>
-    <div class="achievements-grid">
-      <div class="achievement-card">
-        <p>Création d'une application de gestion de notes</p>
-      </div>
-      <div class="achievement-card">
-        <p>Intégration de fonctionnalités avancées</p>
-      </div>
-      <div class="achievement-card">
-        <p>Optimisation des performances</p>
-      </div>
-    </div>
-  </div>
-    </div>
-
-
-
-
-
-
-
-<script  defer src="script.js"></script>
-
+    <script defer src="script.js"></script>
 </body>
-<footer>
-  <div class="container">
-    <div class="footer-content">
-      <p>© 2024 Le Balch. Tous droits réservés</p>
-      <div class="social-links">
-        <a href="https://github.com/Mlebalch"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/mathis-le-balch-3a6778255/"><i class="fab fa-linkedin"></i></a>
-        <a href="https://rikikirito.itch.io/"><i class="fab fa-itch-io"></i></a>
-      </div>
-    </div>
-  </div>
-</footer>
+
 </html>
