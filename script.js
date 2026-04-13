@@ -74,6 +74,8 @@ if(butterflyTrigger) butterflyTrigger.addEventListener('click', toggleFever);
     }
 })();
 
+
+
 // ==========================================
 // LAST.FM API INTEGRATION
 // ==========================================
