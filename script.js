@@ -52,21 +52,29 @@ if(secretTrigger) secretTrigger.addEventListener('click', toggleFever);
 if(butterflyTrigger) butterflyTrigger.addEventListener('click', toggleFever);
 
 // ==========================================
-// VISITOR COUNTER — Ex33 Digit Display (localStorage)
+// VISITOR COUNTER — Global Digit Display (API)
 // ==========================================
-(function loadEx33Counter() {
+(async function loadEx33Counter() {
     const display = document.getElementById('ex33-visitor-display');
     if (!display) return;
 
-    // Increment visit count in localStorage
-    let count = parseInt(localStorage.getItem('mlb_visit_count') || '0', 10);
-    count++;
-    localStorage.setItem('mlb_visit_count', count);
+    let count;
+    try {
+        // Using CounterAPI.dev for global counting
+        const response = await fetch('https://api.counterapi.dev/v1/mlebalch-portfolio/total-visits/hit');
+        const data = await response.json();
+        count = data.count;
+    } catch (e) {
+        console.warn("Global counter offline, using local fallback:", e);
+        count = parseInt(localStorage.getItem('mlb_visit_count') || '1024', 10) + 1;
+        localStorage.setItem('mlb_visit_count', count);
+    }
 
     // Render each digit with Ex33 style
-    const digits = String(count);
+    // We pad to 6 digits for the classic '90s look
+    const countStr = String(count).padStart(6, '0');
     display.innerHTML = '';
-    for (const digit of digits) {
+    for (const digit of countStr) {
         const span = document.createElement('span');
         span.className = 'ex33-digit';
         span.textContent = digit;
