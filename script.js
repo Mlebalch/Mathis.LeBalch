@@ -58,13 +58,13 @@ if(butterflyTrigger) butterflyTrigger.addEventListener('click', toggleFever);
     const display = document.getElementById('ex33-visitor-display');
     if (!display) return;
 
-    // Use CounterAPI.dev (more reliable CORS support)
+    // Use a simpler CounterAPI endpoint (more reliable auto-creation)
     let count;
     try {
-        const response = await fetch('https://api.counterapi.dev/v1/mlebalch-os-retro/total-visits/hit');
+        const response = await fetch('https://api.counterapi.dev/v1/mlebalch_p/up');
         if (!response.ok) throw new Error('API unstable');
         const data = await response.json();
-        count = data.count || 1337;
+        count = data.count || 1;
     } catch (e) {
         console.warn("Global counter API unavailable, using local fallback.");
         count = parseInt(localStorage.getItem('mlb_visit_count') || '1337', 10) + 1;
