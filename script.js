@@ -52,31 +52,13 @@ if(secretTrigger) secretTrigger.addEventListener('click', toggleFever);
 if(butterflyTrigger) butterflyTrigger.addEventListener('click', toggleFever);
 
 // ==========================================
-// VISITOR COUNTER — Global Digit Display (JSON API)
+// VISITOR COUNTER — Global Digit Display (JSONP to bypass CORS)
 // ==========================================
-(async function loadEx33Counter() {
+window.renderVisitorCounter = function(data) {
     const display = document.getElementById('ex33-visitor-display');
-    if (!display) return;
+    if (!display || !data || !data.value) return;
 
-    // Global counter: Intercepting third-party counter or using a stable fallback
-    let count = parseInt(localStorage.getItem('mlb_visit_count') || '1337', 10);
-
-    try {
-        const response = await fetch('https://api.counterapi.dev/v1/mlebalch_final/up');
-        if (response.ok) {
-            const data = await response.json();
-            count = data.count;
-        } else {
-            throw new Error("API not ok");
-        }
-    } catch (e) {
-        console.warn("Global counter fetch failed, using local fallback.");
-        count = parseInt(localStorage.getItem('mlb_visit_count') || '1337', 10) + 1;
-        localStorage.setItem('mlb_visit_count', count);
-    }
-
-    // Render each digit with Ex33 style
-    // Padding to 6 digits for the retro hit-counter look
+    const count = data.value;
     const countStr = String(count).padStart(6, '0');
     display.innerHTML = '';
     for (const digit of countStr) {
@@ -85,6 +67,17 @@ if(butterflyTrigger) butterflyTrigger.addEventListener('click', toggleFever);
         span.textContent = digit;
         display.appendChild(span);
     }
+};
+
+(function initGlobalCounter() {
+    const display = document.getElementById('ex33-visitor-display');
+    if (!display) return;
+
+    // JSONP bypasses CORS by loading the API as a script
+    const script = document.createElement('script');
+    // Using api.countapi.it (stable fork) with a unique namespace
+    script.src = 'https://api.countapi.it/hit/mlebalch-os-p/visits?callback=renderVisitorCounter';
+    document.body.appendChild(script);
 })();
 
 
