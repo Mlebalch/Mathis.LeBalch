@@ -5,128 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio d'Apprentissage — Mathis Le Balch</title>
+    <meta name="description" content="Portfolio d'apprentissage IUT Montpellier-Sète — Compétences BUT Informatique">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-    <style>
-        .project-page {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 0 15px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .back-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: linear-gradient(90deg, #000080, #1084d0);
-            color: white;
-            padding: 6px 14px;
-            border-radius: 4px;
-            font-weight: bold;
-            text-decoration: none;
-            margin-bottom: 12px;
-            font-size: 0.85rem;
-            transition: opacity 0.2s;
-        }
-
-        .back-btn:hover {
-            opacity: 0.85;
-            color: white;
-        }
-
-        .tab-bar {
-            display: flex;
-            gap: 4px;
-            flex-wrap: wrap;
-            margin-bottom: -1px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .tab-btn {
-            padding: 6px 14px;
-            border-radius: 4px 4px 0 0;
-            background: rgba(200, 200, 220, 0.6);
-            border: 1px solid var(--theme-border-color);
-            border-bottom: none;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 0.82rem;
-            transition: background 0.2s;
-            color: var(--theme-page-text-color);
-        }
-
-        .tab-btn.active {
-            background: rgba(255, 247, 255, 0.95);
-            color: var(--theme-accent-color);
-        }
-
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        .comp-item {
-            margin-bottom: 16px;
-            padding: 12px;
-            background: rgba(255, 247, 255, 0.6);
-            border-radius: 6px;
-            border-left: 3px solid var(--theme-accent-color);
-        }
-
-        .comp-item h4 {
-            color: var(--theme-link-color);
-            margin-bottom: 4px;
-            font-size: 0.95rem;
-        }
-
-        .comp-item h5 {
-            color: var(--theme-accent-color);
-            font-size: 0.85rem;
-            margin-bottom: 6px;
-        }
-
-        .comp-item p,
-        .comp-item li {
-            font-size: 0.85rem;
-            line-height: 1.5;
-        }
-
-        .comp-item ul {
-            margin-left: 16px;
-        }
-
-        .ce-chips {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-bottom: 12px;
-        }
-
-        .ce-chip {
-            background: rgba(78, 32, 255, 0.12);
-            border: 1px solid var(--theme-link-color);
-            color: var(--theme-link-color);
-            padding: 2px 10px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: bold;
-        }
-
-        .section-desc {
-            font-size: 0.88rem;
-            line-height: 1.6;
-            margin-bottom: 12px;
-            padding: 10px;
-            background: rgba(148, 39, 146, 0.07);
-            border-radius: 6px;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css?v=4">
 </head>
 
 <body>
@@ -134,154 +15,328 @@
     <div class="custom-cursor"></div>
 
     <div class="project-page">
-        <a href="index.html" class="back-btn">← Retour au Portfolio</a>
-
         <div class="win-window">
             <div class="win-titlebar">
                 <span>📚 Portfolio Apprentissage — IUT Montpellier-Sète</span>
                 <div class="win-controls"><span>—</span><span>☐</span><span>X</span></div>
             </div>
-            <div class="win-content glossy" style="padding-bottom:20px;">
-
-                <div class="tab-bar">
-                    <button class="tab-btn active" onclick="showTab('adm')">ADMINISTRER</button>
-                    <button class="tab-btn" onclick="showTab('ger')">GÉRER</button>
-                    <button class="tab-btn" onclick="showTab('con')">CONDUIRE</button>
-                </div>
-
-                <!-- ADMINISTRER -->
-                <div id="tab-adm" class="tab-content active">
-                    <p class="section-desc">Déployer des services dans une architecture réseau — sécuriser le SI,
-                        appliquer les bonnes pratiques, garantir la qualité de service et la continuité d'activité.</p>
-                    <div class="ce-chips">
-                        <span class="ce-chip">CE3.01 Sécurisation SI</span>
-                        <span class="ce-chip">CE3.02 Qualité de service</span>
-                        <span class="ce-chip">CE3.03 Bonnes pratiques</span>
-                        <span class="ce-chip">CE3.04 Continuité d'activité</span>
-                    </div>
-                    <div class="comp-item">
-                        <h4>AC 1 — Applications communicantes</h4>
-                        <h5>Projet : Tricount – Application de calcul de dette</h5>
-                        <p><strong>Contexte :</strong> Application Web full-stack pour automatiser le calcul de dettes
-                            entre amis.</p>
-                        <ul>
-                            <li>Modélisation base de données MySQL (schéma ER normalisé)</li>
-                            <li>Développement d'API REST en PHP avec requêtes préparées</li>
-                            <li>Interface client avec Ajax et notifications visuelles</li>
-                        </ul>
-                    </div>
-                    <div class="comp-item">
-                        <h4>AC 2 — Serveurs et services virtualisés</h4>
-                        <h5>Projet : LAMP / TP Virtualisation</h5>
-                        <p><strong>Contexte :</strong> Déploiement d'un serveur LAMP.</p>
-                        <ul>
-                            <li>Configuration Hyper-V / VM Ubuntu avec pile LAMP</li>
-                            <li>Installation et configuration des serveurs</li>
-                            <li>Conteneurisation avec Docker</li>
-                        </ul>
-                    </div>
-                    <div class="comp-item">
-                        <h4>AC 3 — Sécuriser les services et données</h4>
-                        <h5>Projet : Code Game Jam 2024 – Sécurisation réseau</h5>
-                        <p><strong>Contexte :</strong> Jeu multijoueur avec communication par sockets.</p>
-                        <ul>
-                            <li>Hachage SHA-256 des mots de passe</li>
-                            <li>Vérification et filtrage des paquets entrants</li>
-                        </ul>
+            <div class="win-content glossy">
+                <div class="proj-hero">
+                    <img src="ressources/256x256.png" alt="Portfolio Apprentissage" style="border-radius:8px;">
+                    <div class="proj-hero-text">
+                        <h1>Portfolio d'Apprentissage</h1>
+                        <div class="meta">
+                            <span class="meta-chip"><i class="fas fa-university"></i> IUT Montpellier-Sète</span>
+                            <span class="meta-chip"><i class="fas fa-calendar"></i> 2022 – 2025</span>
+                            <span class="meta-chip">BUT Informatique</span>
+                            <span class="meta-chip">Semestres 3 & 4</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- GÉRER -->
-                <div id="tab-ger" class="tab-content">
-                    <p class="section-desc">Optimiser une base de données, interagir avec une application et mettre en
-                        œuvre la sécurité des données.</p>
-                    <div class="ce-chips">
-                        <span class="ce-chip">CE4.01 RGPD</span>
-                        <span class="ce-chip">CE4.02 Enjeux éco/sociétaux</span>
-                        <span class="ce-chip">CE4.03 Bases mathématiques</span>
-                        <span class="ce-chip">CE4.04 Qualité des données</span>
-                    </div>
-                    <div class="comp-item">
-                        <h4>AC 1 — Optimiser les modèles de données</h4>
-                        <h5>Projet : CapyNote – Modélisation et optimisation SQL</h5>
-                        <ul>
-                            <li>Conception de schéma ER normalisé</li>
-                            <li>Indexation avancée et partitionnement par année</li>
-                            <li>Vues matérialisées et procédures stockées</li>
-                        </ul>
-                    </div>
-                    <div class="comp-item">
-                        <h4>AC 2 — Confidentialité des données</h4>
-                        <h5>Projet : CapyNote – Sécurisation RGPD</h5>
-                        <ul>
-                            <li>Chiffrement des données sensibles</li>
-                            <li>Hachage des mots de passe</li>
-                            <li>Gestion des rôles et droit à l'oubli</li>
-                        </ul>
-                    </div>
-                    <div class="comp-item">
-                        <h4>AC 3 — Restitution de données</h4>
-                        <h5>Projet : CapyNote – Tableaux de bord</h5>
-                        <ul>
-                            <li>Tableaux interactifs avec DataTables.js</li>
-                            <li>Génération de rapports PDF</li>
-                            <li>Visualisations avec Chart.js</li>
-                        </ul>
+                <div class="proj-section">
+                    <h2>À propos</h2>
+                    <p class="desc-text">
+                        Ce portfolio d'apprentissage retrace les compétences acquises dans le cadre du <b>BUT Informatique</b>
+                        à l'IUT de Montpellier-Sète. Chaque compétence est illustrée par des projets concrets réalisés en cours
+                        de formation. Ce document synthétise mes acquis techniques et transversaux selon le référentiel national
+                        du BUT Informatique.
+                    </p>
+                </div>
+
+                <div class="proj-section">
+                    <h2>Compétences couvertes</h2>
+                    <div class="tech-grid">
+                        <span class="tech-chip">Réaliser</span>
+                        <span class="tech-chip">Optimiser</span>
+                        <span class="tech-chip">Administrer</span>
+                        <span class="tech-chip">Gérer</span>
+                        <span class="tech-chip">Conduire</span>
+                        <span class="tech-chip">Collaborer</span>
                     </div>
                 </div>
 
-                <!-- CONDUIRE -->
-                <div id="tab-con" class="tab-content">
-                    <p class="section-desc">Appliquer une démarche de suivi de projet en mode Agile, respecter les
-                        règles juridiques, adopter une gestion éthique et responsable.</p>
-                    <div class="ce-chips">
-                        <span class="ce-chip">CE5.01 Communication</span>
-                        <span class="ce-chip">CE5.02 Règles juridiques</span>
-                        <span class="ce-chip">CE5.03 Éthique</span>
-                        <span class="ce-chip">CE5.04 Démarche proactive</span>
+                <!-- Tab Navigation -->
+                <div class="proj-section">
+                    <h2>Détail par compétence</h2>
+                    <div class="tab-bar">
+                        <button class="tab-btn active" onclick="showTab('rea', this)">Réaliser</button>
+                        <button class="tab-btn" onclick="showTab('opt', this)">Optimiser</button>
+                        <button class="tab-btn" onclick="showTab('adm', this)">Administrer</button>
+                        <button class="tab-btn" onclick="showTab('ger', this)">Gérer</button>
+                        <button class="tab-btn" onclick="showTab('con', this)">Conduire</button>
+                        <button class="tab-btn" onclick="showTab('col', this)">Collaborer</button>
                     </div>
-                    <div class="comp-item">
-                        <h4>AC 1 — Identifier les processus</h4>
-                        <h5>Projet : Jeu "Train" – Analyse des processus métier</h5>
-                        <ul>
-                            <li>Diagrammes d'activité UML</li>
-                            <li>Spécification fonctionnelle détaillée</li>
-                            <li>Tests d'accessibilité et d'ergonomie</li>
-                        </ul>
-                    </div>
-                    <div class="comp-item">
-                        <h4>AC 2 — Formaliser les besoins</h4>
-                        <h5>Projet : Nuit de l'Info 2024</h5>
-                        <ul>
-                            <li>Priorisation MoSCoW des fonctionnalités</li>
-                            <li>Rédaction de cahier des charges express</li>
-                            <li>Découpage Agile en user stories</li>
-                        </ul>
-                    </div>
-                    <div class="comp-item">
-                        <h4>AC 4 — Suivi de projet Agile</h4>
-                        <h5>Projet : CapyNote – Coordination</h5>
-                        <ul>
-                            <li>Trello et réunions hebdomadaires</li>
-                            <li>Revues de sprint et documentation</li>
-                            <li>Suivi par burndown chart</li>
-                        </ul>
+                    <div style="border: 1px solid var(--theme-border-color); border-radius: 0 6px 6px 6px; padding: 14px;">
+
+                        <!-- RÉALISER -->
+                        <div id="tab-rea" class="tab-content active">
+                            <p class="section-desc">Développer des applications en répondant à des besoins informatiques — concevoir, coder, tester et intégrer des solutions logicielles.</p>
+                            <div class="ce-chips">
+                                <span class="ce-chip">CE1.01 Respect des besoins</span>
+                                <span class="ce-chip">CE1.02 Qualité du code</span>
+                                <span class="ce-chip">CE1.03 Maintenabilité</span>
+                                <span class="ce-chip">CE1.04 Tests</span>
+                            </div>
+                            <div class="comp-item">
+                                <h4>AC 1 — Partir des exigences et aller jusqu'à une application complète</h4>
+                                <h5>Projet : CapyNote — Gestion des poursuites d'études</h5>
+                                <p><strong>Contexte :</strong> Application web full-stack développée en 3 mois en équipe de 4.</p>
+                                <ul>
+                                    <li>Analyse des besoins et rédaction des spécifications fonctionnelles</li>
+                                    <li>Développement PHP/MySQL avec architecture MVC</li>
+                                    <li>Génération de rapports PDF et tableaux de bord Chart.js</li>
+                                </ul>
+                            </div>
+                            <div class="comp-item">
+                                <h4>AC 2 — Appliquer des principes d'accessibilité et d'ergonomie</h4>
+                                <h5>Projet : Jeu "Train" — Interface JavaFX</h5>
+                                <ul>
+                                    <li>Conception d'une interface graphique FXML intuitive</li>
+                                    <li>Tests d'accessibilité et d'ergonomie utilisateur</li>
+                                    <li>Application du pattern MVC pour séparer logique et affichage</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- OPTIMISER -->
+                        <div id="tab-opt" class="tab-content">
+                            <p class="section-desc">Proposer des applications informatiques optimisées — algorithmes, structures de données, performances et complexité.</p>
+                            <div class="ce-chips">
+                                <span class="ce-chip">CE2.01 Rigueur algorithmique</span>
+                                <span class="ce-chip">CE2.02 Structures de données</span>
+                                <span class="ce-chip">CE2.03 Analyse des performances</span>
+                            </div>
+                            <div class="comp-item">
+                                <h4>AC 1 — Anticiper les résultats de diverses métriques</h4>
+                                <h5>Projet : Nuit de l'Info 2024 — EcoIndex 88/100</h5>
+                                <ul>
+                                    <li>Optimisation du poids des assets (images WebP, lazy loading)</li>
+                                    <li>Minification CSS/JS et suppression du code mort</li>
+                                    <li>Score EcoIndex de 88/100 obtenu — Médaille de Bronze Green Dev</li>
+                                </ul>
+                            </div>
+                            <div class="comp-item">
+                                <h4>AC 2 — Profiler, analyser et justifier le comportement d'un code existant</h4>
+                                <h5>Projet : CapyNote — Optimisation SQL</h5>
+                                <ul>
+                                    <li>Indexation avancée et partitionnement des tables par année</li>
+                                    <li>Vues matérialisées et procédures stockées</li>
+                                    <li>Analyse des plans d'exécution et réduction des requêtes N+1</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- ADMINISTRER -->
+                        <div id="tab-adm" class="tab-content">
+                            <p class="section-desc">Déployer des services dans une architecture réseau — sécuriser le SI, appliquer les bonnes pratiques, garantir la qualité de service et la continuité d'activité.</p>
+                            <div class="ce-chips">
+                                <span class="ce-chip">CE3.01 Sécurisation SI</span>
+                                <span class="ce-chip">CE3.02 Qualité de service</span>
+                                <span class="ce-chip">CE3.03 Bonnes pratiques</span>
+                                <span class="ce-chip">CE3.04 Continuité d'activité</span>
+                            </div>
+                            <div class="comp-item">
+                                <h4>AC 1 — Applications communicantes</h4>
+                                <h5>Projet : Tricount — Application de calcul de dette</h5>
+                                <p><strong>Contexte :</strong> Application Web full-stack pour automatiser le calcul de dettes entre amis.</p>
+                                <ul>
+                                    <li>Modélisation base de données MySQL (schéma ER normalisé)</li>
+                                    <li>Développement d'API REST en PHP avec requêtes préparées</li>
+                                    <li>Interface client avec Ajax et notifications visuelles</li>
+                                </ul>
+                            </div>
+                            <div class="comp-item">
+                                <h4>AC 2 — Serveurs et services virtualisés</h4>
+                                <h5>Projet : LAMP / TP Virtualisation</h5>
+                                <p><strong>Contexte :</strong> Déploiement d'un serveur LAMP.</p>
+                                <ul>
+                                    <li>Configuration Hyper-V / VM Ubuntu avec pile LAMP</li>
+                                    <li>Installation et configuration des serveurs</li>
+                                    <li>Conteneurisation avec Docker</li>
+                                </ul>
+                            </div>
+                            <div class="comp-item">
+                                <h4>AC 3 — Sécuriser les services et données</h4>
+                                <h5>Projet : Code Game Jam 2024 — Sécurisation réseau</h5>
+                                <p><strong>Contexte :</strong> Jeu multijoueur avec communication par sockets.</p>
+                                <ul>
+                                    <li>Hachage SHA-256 des mots de passe</li>
+                                    <li>Vérification et filtrage des paquets entrants</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- GÉRER -->
+                        <div id="tab-ger" class="tab-content">
+                            <p class="section-desc">Optimiser une base de données, interagir avec une application et mettre en œuvre la sécurité des données.</p>
+                            <div class="ce-chips">
+                                <span class="ce-chip">CE4.01 RGPD</span>
+                                <span class="ce-chip">CE4.02 Enjeux éco/sociétaux</span>
+                                <span class="ce-chip">CE4.03 Bases mathématiques</span>
+                                <span class="ce-chip">CE4.04 Qualité des données</span>
+                            </div>
+                            <div class="comp-item">
+                                <h4>AC 1 — Optimiser les modèles de données</h4>
+                                <h5>Projet : CapyNote — Modélisation et optimisation SQL</h5>
+                                <ul>
+                                    <li>Conception de schéma ER normalisé</li>
+                                    <li>Indexation avancée et partitionnement par année</li>
+                                    <li>Vues matérialisées et procédures stockées</li>
+                                </ul>
+                            </div>
+                            <div class="comp-item">
+                                <h4>AC 2 — Confidentialité des données</h4>
+                                <h5>Projet : CapyNote — Sécurisation RGPD</h5>
+                                <ul>
+                                    <li>Chiffrement des données sensibles</li>
+                                    <li>Hachage des mots de passe</li>
+                                    <li>Gestion des rôles et droit à l'oubli</li>
+                                </ul>
+                            </div>
+                            <div class="comp-item">
+                                <h4>AC 3 — Restitution de données</h4>
+                                <h5>Projet : CapyNote — Tableaux de bord</h5>
+                                <ul>
+                                    <li>Tableaux interactifs avec DataTables.js</li>
+                                    <li>Génération de rapports PDF</li>
+                                    <li>Visualisations avec Chart.js</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- CONDUIRE -->
+                        <div id="tab-con" class="tab-content">
+                            <p class="section-desc">Appliquer une démarche de suivi de projet en mode Agile, respecter les règles juridiques, adopter une gestion éthique et responsable.</p>
+                            <div class="ce-chips">
+                                <span class="ce-chip">CE5.01 Communication</span>
+                                <span class="ce-chip">CE5.02 Règles juridiques</span>
+                                <span class="ce-chip">CE5.03 Éthique</span>
+                                <span class="ce-chip">CE5.04 Démarche proactive</span>
+                            </div>
+                            <div class="comp-item">
+                                <h4>AC 1 — Identifier les processus</h4>
+                                <h5>Projet : Jeu "Train" — Analyse des processus métier</h5>
+                                <ul>
+                                    <li>Diagrammes d'activité UML</li>
+                                    <li>Spécification fonctionnelle détaillée</li>
+                                    <li>Tests d'accessibilité et d'ergonomie</li>
+                                </ul>
+                            </div>
+                            <div class="comp-item">
+                                <h4>AC 2 — Formaliser les besoins</h4>
+                                <h5>Projet : Nuit de l'Info 2024</h5>
+                                <ul>
+                                    <li>Priorisation MoSCoW des fonctionnalités</li>
+                                    <li>Rédaction de cahier des charges express</li>
+                                    <li>Découpage Agile en user stories</li>
+                                </ul>
+                            </div>
+                            <div class="comp-item">
+                                <h4>AC 4 — Suivi de projet Agile</h4>
+                                <h5>Projet : CapyNote — Coordination</h5>
+                                <ul>
+                                    <li>Trello et réunions hebdomadaires</li>
+                                    <li>Revues de sprint et documentation</li>
+                                    <li>Suivi par burndown chart</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- COLLABORER -->
+                        <div id="tab-col" class="tab-content">
+                            <p class="section-desc">Acquérir, développer et exploiter les aptitudes nécessaires pour travailler efficacement dans une équipe informatique.</p>
+                            <div class="ce-chips">
+                                <span class="ce-chip">CE6.01 Communication technique</span>
+                                <span class="ce-chip">CE6.02 Gestion de version</span>
+                                <span class="ce-chip">CE6.03 Documentation</span>
+                            </div>
+                            <div class="comp-item">
+                                <h4>AC 1 — Intégrer une équipe informatique</h4>
+                                <h5>Tous les projets en équipe</h5>
+                                <ul>
+                                    <li>Utilisation systématique de Git/GitHub avec branches et pull requests</li>
+                                    <li>Revues de code entre pairs et gestion des merge conflicts</li>
+                                    <li>Rédaction de README et documentation technique</li>
+                                </ul>
+                            </div>
+                            <div class="comp-item">
+                                <h4>AC 2 — Situer son rôle et ses missions au sein d'une équipe</h4>
+                                <h5>Projet : Nuit de l'Info 2024 — Coordination frontend</h5>
+                                <ul>
+                                    <li>Prise en charge du développement frontend et de l'optimisation</li>
+                                    <li>Coordination avec le backend PHP développé par les autres membres</li>
+                                    <li>Présentation des résultats au jury national</li>
+                                </ul>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
-
             </div>
         </div>
+    </div>
 
+    <!-- Barre des tâches Windows -->
+    <div class="windows-taskbar">
+        <div class="taskbar-start" onclick="window.scrollTo(0,0);">
+            <img src="ressources/256x256.png" width="20" height="20"
+                style="filter: drop-shadow(0 0 2px rgba(255,255,255,0.8));">
+            <span>Démarrer</span>
+        </div>
+
+        <div class="taskbar-items">
+            <a href="train.html" class="taskbar-item" style="text-decoration:none; color:inherit; padding: 0 10px;" title="← Train">
+                <i class="fas fa-chevron-left"></i>
+            </a>
+            <a href="index.html" class="taskbar-item" style="text-decoration:none; color:inherit;">
+                <img src="https://dimden.dev/images/buttons/win95.gif" width="16" height="16"
+                    style="margin-right: 5px;"> Portfolio.exe
+            </a>
+            <div class="taskbar-item active">
+                <img src="https://dimden.dev/images/buttons/html5.gif" width="16" height="16"
+                    style="margin-right: 5px; border-radius: 2px;"> Apprentissage.exe
+            </div>
+            <a href="codegamejam.html" class="taskbar-item" style="text-decoration:none; color:inherit; padding: 0 10px;" title="Code Game Jam →">
+                <i class="fas fa-chevron-right"></i>
+            </a>
+        </div>
+
+        <div class="taskbar-tray">
+            <div id="google_translate_element"></div>
+            <span style="margin: 0 10px; opacity: 0.6;">|</span>
+            <div id="taskbar-clock" style="font-weight: bold; padding: 0 5px;"></div>
+            <span style="margin: 0 10px; opacity: 0.6;">|</span>
+            <span id="copyright" style="font-size: 0.8rem;">© <span id="current-year"></span> Mathis Le Balch.</span>
+        </div>
     </div>
 
     <script>
-        function showTab(id) {
+        function showTab(id, btn) {
             document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
             document.getElementById('tab-' + id).classList.add('active');
-            event.target.classList.add('active');
+            btn.classList.add('active');
+        }
+        (function () {
+            try {
+                const userLang = navigator.language || navigator.userLanguage;
+                if (userLang && !userLang.toLowerCase().startsWith('fr') && !document.cookie.includes('googtrans')) {
+                    const langCode = userLang.split('-')[0];
+                    document.cookie = `googtrans=/fr/${langCode}; path=/`;
+                    document.cookie = `googtrans=/fr/${langCode}; domain=.${location.hostname}; path=/`;
+                }
+            } catch (e) { }
+        })();
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'fr',
+                autoDisplay: false,
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
         }
     </script>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
     <script defer src="script.js"></script>
 </body>
 

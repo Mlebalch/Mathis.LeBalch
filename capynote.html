@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CapyNote — Mathis Le Balch</title>
-    <meta name="description" content="CapyNote — Application de gestion des poursuites d'études PHP/MySQL">
+    <meta name="description" content="CapyNote — Application web de gestion des poursuites d'études PHP/MySQL">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=4">
 </head>
 
 <body>
@@ -15,8 +15,6 @@
     <div class="custom-cursor"></div>
 
     <div class="project-page">
-        <a href="index.html" class="back-btn">← Retour au Portfolio</a>
-
         <div class="win-window">
             <div class="win-titlebar">
                 <span>🦫 CapyNote.exe — Dossier Projet</span>
@@ -31,7 +29,7 @@
                             <span class="meta-chip"><i class="fas fa-calendar"></i> Oct 2023 – Jan 2024</span>
                             <span class="meta-chip"><i class="fas fa-users"></i> Équipe de 4</span>
                             <span class="meta-chip">Gestion des Poursuites d'Études</span>
-                            <span class="meta-chip">PHP/MySQL</span>
+                            <span class="meta-chip">PHP / MySQL</span>
                         </div>
                     </div>
                 </div>
@@ -39,12 +37,12 @@
                 <div class="proj-section">
                     <h2>Description</h2>
                     <p class="desc-text">
-                        <b>CapyNote</b> est une application web de gestion des dossiers de poursuite d'études développée
-                        pour simplifier
-                        le suivi administratif des étudiants en fin de cursus. L'application permet aux étudiants de
-                        soumettre
-                        leurs candidatures, aux responsables de les traiter et de générer des rapports de suivi.
-                        Le projet a été réalisé en équipe de 4 sur 3 mois avec une méthodologie agile.
+                        <b>CapyNote</b> est une application web de gestion des dossiers de poursuite d'études 
+                        développée pour simplifier le suivi administratif des étudiants en fin de cursus. 
+                        L'application permet aux étudiants de soumettre leurs candidatures, aux responsables de 
+                        les traiter et de générer des rapports de suivi statistiques.
+                        Le projet a été réalisé en équipe de 4 sur 3 mois avec une <b>méthodologie Agile</b> (sprints Trello, 
+                        revues hebdomadaires, burndown chart).
                     </p>
                 </div>
 
@@ -57,6 +55,8 @@
                         <span class="tech-chip">JavaScript</span>
                         <span class="tech-chip">TailwindCSS</span>
                         <span class="tech-chip">Docker</span>
+                        <span class="tech-chip">DataTables.js</span>
+                        <span class="tech-chip">Chart.js</span>
                     </div>
                 </div>
 
@@ -64,41 +64,91 @@
                     <h2>Fonctionnalités clés</h2>
                     <div class="achieve-grid">
                         <div class="achieve-card">
-                            <strong>📋 Gestion des Dossiers</strong>
-                            Soumission, suivi et validation des candidatures
+                            <strong>📋 Gestion des dossiers</strong>
+                            Soumission, suivi et validation des candidatures étudiant
                         </div>
                         <div class="achieve-card">
                             <strong>👤 Multi-Rôles</strong>
-                            Étudiants, responsables, administrateurs
+                            Étudiant, responsable pédagogique, administrateur
                         </div>
                         <div class="achieve-card">
-                            <strong>📊 Tableaux de Bord</strong>
-                            Visualisation des statistiques et états
+                            <strong>📊 Tableaux de bord</strong>
+                            Charts.js, DataTables, exports PDF automatisés
                         </div>
                         <div class="achieve-card">
                             <strong>🐳 Docker</strong>
                             Environnement conteneurisé pour le déploiement
                         </div>
+                        <div class="achieve-card">
+                            <strong>🔒 Sécurité RGPD</strong>
+                            Chiffrement, hachage des mots de passe, droit à l'oubli
+                        </div>
+                        <div class="achieve-card">
+                            <strong>🗄️ SQL avancé</strong>
+                            Indexation, vues matérialisées, procédures stockées
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="win-window" style="margin-top:10px;">
-            <div class="win-titlebar">
-                <span>Navigation Projets</span>
-                <div class="win-controls"><span>—</span><span>☐</span><span>X</span></div>
-            </div>
-            <div class="win-content glossy"
-                style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;">
-                <a href="train.html" class="back-btn"
-                    style="margin:0; background: linear-gradient(90deg,#4e20ff,#942792);">← Train</a>
-                <a href="nuit-info.html" class="back-btn"
-                    style="margin:0; background: linear-gradient(90deg,#942792,#4e20ff);">Nuit de l'Info →</a>
+                <img src="ressources/CapyNote.png" alt="CapyNote — Aperçu" class="screenshot">
             </div>
         </div>
     </div>
 
+    <!-- Barre des tâches Windows -->
+    <div class="windows-taskbar">
+        <div class="taskbar-start" onclick="window.scrollTo(0,0);">
+            <img src="ressources/256x256.png" width="20" height="20"
+                style="filter: drop-shadow(0 0 2px rgba(255,255,255,0.8));">
+            <span>Démarrer</span>
+        </div>
+
+        <div class="taskbar-items">
+            <a href="nuit-info.html" class="taskbar-item" style="text-decoration:none; color:inherit; padding: 0 10px;" title="← Nuit de l'Info">
+                <i class="fas fa-chevron-left"></i>
+            </a>
+            <a href="index.html" class="taskbar-item" style="text-decoration:none; color:inherit;">
+                <img src="https://dimden.dev/images/buttons/win95.gif" width="16" height="16"
+                    style="margin-right: 5px;"> Portfolio.exe
+            </a>
+            <div class="taskbar-item active">
+                <img src="ressources/CapyNote.png" width="16" height="16"
+                    style="margin-right: 5px; border-radius: 2px; object-fit:cover;"> CapyNote.exe
+            </div>
+            <a href="train.html" class="taskbar-item" style="text-decoration:none; color:inherit; padding: 0 10px;" title="Train →">
+                <i class="fas fa-chevron-right"></i>
+            </a>
+        </div>
+
+        <div class="taskbar-tray">
+            <div id="google_translate_element"></div>
+            <span style="margin: 0 10px; opacity: 0.6;">|</span>
+            <div id="taskbar-clock" style="font-weight: bold; padding: 0 5px;"></div>
+            <span style="margin: 0 10px; opacity: 0.6;">|</span>
+            <span id="copyright" style="font-size: 0.8rem;">© <span id="current-year"></span> Mathis Le Balch. 🌿</span>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            try {
+                const userLang = navigator.language || navigator.userLanguage;
+                if (userLang && !userLang.toLowerCase().startsWith('fr') && !document.cookie.includes('googtrans')) {
+                    const langCode = userLang.split('-')[0];
+                    document.cookie = `googtrans=/fr/${langCode}; path=/`;
+                    document.cookie = `googtrans=/fr/${langCode}; domain=.${location.hostname}; path=/`;
+                }
+            } catch (e) { }
+        })();
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'fr',
+                autoDisplay: false,
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
     <script defer src="script.js"></script>
 </body>
 
