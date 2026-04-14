@@ -118,8 +118,10 @@ async function fetchLastFm() {
                 timeEl.style.marginTop = '4px';
                 artistEl.parentNode.appendChild(timeEl);
             }
-            timeEl.className = timeClass;
-            timeEl.textContent = timeText;
+            if (timeEl) {
+                timeEl.className = timeClass;
+                timeEl.textContent = timeText;
+            }
             
             // Get large image
             const images = track.image;
@@ -265,3 +267,31 @@ function animateParticles() {
     requestAnimationFrame(animateParticles);
 }
 animateParticles();
+
+// ==========================================
+// GLOBALS & UTILS
+// ==========================================
+(function initGlobals() {
+    function updateClock() {
+        const clockEl = document.getElementById('taskbar-clock');
+        if (!clockEl) return;
+        const now = new Date();
+        clockEl.textContent = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    }
+
+    function runGlobalInits() {
+        // Auto-update year
+        const yearSpan = document.getElementById('current-year');
+        if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+
+        // Initial clock update and interval
+        updateClock();
+        setInterval(updateClock, 1000);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', runGlobalInits);
+    } else {
+        runGlobalInits();
+    }
+})();

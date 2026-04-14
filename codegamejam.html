@@ -4,185 +4,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Code Game Jam 2024 — Mathis Le Balch</title>
-    <meta name="description" content="Code Game Jam 2024 — Prix du public, jeu développé en 48h">
+    <title>Code Game Jam 2026 — After Party : The Declic — Mathis Le Balch</title>
+    <meta name="description"
+        content="Code Game Jam 2026 — After Party : The Declic — Prix du meilleur design, 1ère place régionale">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=4">
     <style>
-        .project-page {
-            max-width: 750px;
-            margin: 20px auto;
-            padding: 0 15px;
-            position: relative;
-            z-index: 2;
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 8px;
         }
 
-        .back-btn {
-            display: inline-flex;
-            align-items: center;
+        .team-card {
+            background: rgba(255, 247, 255, 0.7);
+            border: 1px solid var(--theme-border-color);
+            border-radius: 6px;
+            padding: 10px 12px;
+            font-size: 0.82rem;
+        }
+
+        .team-card strong {
+            display: block;
+            color: var(--theme-accent-color);
+            margin-bottom: 3px;
+            font-size: 0.88rem;
+        }
+
+        .team-card span {
+            color: var(--theme-page-text-mix-color);
+        }
+
+        .screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
             gap: 8px;
-            background: linear-gradient(90deg, #000080, #1084d0);
-            color: white;
-            padding: 6px 14px;
-            border-radius: 4px;
-            font-weight: bold;
-            text-decoration: none;
-            margin-bottom: 12px;
-            font-size: 0.85rem;
-            transition: opacity 0.2s;
+            margin-top: 8px;
         }
 
-        .back-btn:hover {
-            opacity: 0.85;
-            color: white;
-        }
-
-        .proj-hero {
-            display: flex;
-            gap: 18px;
-            align-items: center;
-            flex-wrap: wrap;
-            margin-bottom: 12px;
-        }
-
-        .proj-hero img {
-            max-width: 140px;
-            border-radius: 8px;
-            border: 2px solid var(--theme-accent-color);
-        }
-
-        .proj-hero-text h1 {
-            font-size: 1.6rem;
-            color: var(--theme-accent-color);
-            margin-bottom: 4px;
-        }
-
-        .meta-chip {
-            background: rgba(148, 39, 146, 0.1);
-            border: 1px solid var(--theme-accent-color);
-            color: var(--theme-accent-color);
-            padding: 2px 10px;
-            border-radius: 20px;
-            font-size: 0.78rem;
-        }
-
-        .proj-section {
-            margin-bottom: 15px;
-        }
-
-        .proj-section h2 {
-            font-size: 1.1rem;
-            margin-bottom: 8px;
-            color: var(--theme-accent-color);
-            border-bottom: 1px solid var(--theme-border-color);
-            padding-bottom: 4px;
-        }
-
-        .desc-text {
-            font-size: 0.9rem;
-            line-height: 1.6;
-        }
-
-        .award-banner {
-            background: linear-gradient(135deg, #ffd700, #ff9900);
-            color: #000;
-            padding: 12px 20px;
-            border-radius: 8px;
-            font-weight: bold;
-            text-align: center;
-            font-size: 1.1rem;
-            box-shadow: 0 0 15px rgba(255, 165, 0, 0.5);
-            margin-bottom: 15px;
-        }
-
-        /* Game Frame Styling */
-        .game-container {
+        .screenshots-grid img {
             width: 100%;
-            border-radius: 8px;
-            overflow: hidden;
-            background: #000;
-            border: 2px solid var(--theme-accent-color);
-            position: relative;
-            aspect-ratio: 16/9;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            border-radius: 6px;
+            border: 2px solid var(--theme-border-color);
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
         }
 
-        #game-iframe {
+        .screenshots-grid img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 16px rgba(148, 39, 146, 0.4);
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            border: 2px solid var(--theme-accent-color);
+            margin-top: 8px;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             border: none;
-            display: none;
         }
 
-        .launch-overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.85);
+        .distinctions-row {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 10;
-            gap: 20px;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .launch-btn {
-            background: linear-gradient(135deg, #942792, #4e20ff);
-            color: white;
-            border: none;
-            padding: 15px 40px;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 0 20px rgba(148, 39, 146, 0.6);
-            transition: transform 0.2s, box-shadow 0.2s;
-            font-family: 'TheSherloks', sans-serif;
-        }
-
-        .launch-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 35px rgba(148, 39, 146, 0.9);
-        }
-
-        .action-btns {
-            display: flex;
-            gap: 10px;
             flex-wrap: wrap;
-            margin-top: 10px;
+            gap: 10px;
+            margin-top: 8px;
         }
 
-        .download-btn {
-            background: #242424;
-            color: white;
-            border: 1px solid #444;
-            padding: 8px 16px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-size: 0.85rem;
+        .distinction-badge {
+            background: linear-gradient(135deg, #ffd700, #ff9900);
+            color: #000;
+            padding: 8px 18px;
+            border-radius: 30px;
             font-weight: bold;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: background 0.2s;
-        }
-
-        .download-btn:hover {
-            background: #333;
-            color: #ffd700;
-            border-color: #ffd700;
-        }
-
-        .fullscreen-msg {
-            color: #fff;
-            font-size: 0.8rem;
-            margin-top: 10px;
-            opacity: 0.8;
+            font-size: 0.88rem;
+            box-shadow: 0 0 12px rgba(255, 165, 0, 0.4);
         }
     </style>
 </head>
@@ -192,72 +99,178 @@
     <div class="custom-cursor"></div>
 
     <div class="project-page">
-        <a href="index.html" class="back-btn">← Retour au Portfolio</a>
-
         <div class="win-window">
             <div class="win-titlebar">
-                <span>🎮 Code Game Jam 2024 — After Party : the declic</span>
+                <span>🎮 Code Game Jam 2026 — After Party : The Declic</span>
                 <div class="win-controls"><span>—</span><span>☐</span><span>X</span></div>
             </div>
             <div class="win-content glossy">
-                <div class="award-banner">🏆 Prix du Public — Code Game Jam 2024 — 3ème Édition</div>
 
+                <!-- Hero -->
                 <div class="proj-hero">
-                    <img src="ressources/Logo-Code-Game-Jam-3ème-Edition-1024x310.webp" alt="Code Game Jam">
+                    <img src="ressources/iconCGJ.png" alt="Code Game Jam">
                     <div class="proj-hero-text">
-                        <h1>Code Game Jam 2024</h1>
+                        <h1>After Party : The Declic</h1>
                         <div class="meta">
-                            <span class="meta-chip"><i class="fas fa-calendar"></i> 2024</span>
-                            <span class="meta-chip"><i class="fas fa-trophy"></i> Prix du Public</span>
+                            <span class="meta-chip"><i class="fas fa-calendar"></i> 2026</span>
+                            <span class="meta-chip"><i class="fas fa-users"></i> Équipe de 9</span>
                             <span class="meta-chip">Godot 4.x</span>
+                            <span class="meta-chip">IUT Montpellier-Sète</span>
                         </div>
                     </div>
                 </div>
+
+                <!-- Description -->
                 <div class="proj-section">
-                    <h2>À propos du projet</h2>
+                    <h2>🕹️ À propos</h2>
                     <p class="desc-text">
-                        Développé en seulement 48 heures lors de la <b>Code Game Jam 2024</b>, ce jeu a remporté le
-                        prestigieux <b>Prix du Public</b>.
-                        Il s'agit d'une expérience narrative immersive créée avec le moteur Godot, mettant l'accent sur
-                        l'ambiance et le gameplay interactif.
+                        Après une soirée beaucoup trop réussie, l'appartement est dans un état catastrophique.
+                        Pourtant, le vrai problème n'est pas seulement le bazar, mais surtout le <b>temps</b> —
+                        car ton père arrive. Très bientôt. Et s'il voit ça… tu vas prendre très cher.
+                    </p>
+                    <p class="desc-text" style="margin-top: 8px;">
+                        <b>After Party : The Declic</b> est un jeu narratif et interactif réalisé dans le cadre
+                        de la <b>Code Game Jam 2026</b> de l'IUT Montpellier-Sète. Tu dois à la fois convaincre
+                        les derniers invités de partir, remettre de l'ordre dans l'appartement et gérer une
+                        pression qui monte à chaque seconde. Situations tendues et décisions rapides — chaque
+                        action a un impact direct sur l'issue de la partie.
                     </p>
                 </div>
+
+                <!-- Distinctions -->
+                <div class="proj-section">
+                    <h2>🏆 Distinctions</h2>
+                    <div class="distinctions-row">
+                        <div class="distinction-badge">🥇 1ère place Régionale</div>
+                        <div class="distinction-badge">🌍 4ème place Internationale</div>
+                        <div class="distinction-badge">🎨 Prix du meilleur design</div>
+                    </div>
+                </div>
+
+                <!-- Technologies -->
+                <div class="proj-section">
+                    <h2>Technologies utilisées</h2>
+                    <div class="tech-grid">
+                        <span class="tech-chip">Godot 4.x</span>
+                        <span class="tech-chip">GDScript</span>
+                        <span class="tech-chip">Game Design</span>
+                        <span class="tech-chip">Modélisation 3D</span>
+                        <span class="tech-chip">Sound Design</span>
+                        <span class="tech-chip">Direction Artistique</span>
+                    </div>
+                </div>
+
+                <!-- Screenshots -->
+                <div class="proj-section">
+                    <h2>📸 Captures d'écran</h2>
+                    <div class="screenshots-grid">
+                        <img src="ressources/cgj-screenshot1.png" alt="After Party Screenshot 1">
+                        <img src="ressources/cgj-screenshot2.png" alt="After Party Screenshot 2">
+                        <img src="ressources/cgj-screenshot3.png" alt="After Party Screenshot 3">
+                    </div>
+                </div>
+
+                <!-- Équipe -->
+                <div class="proj-section">
+                    <h2>👥 L'équipe</h2>
+                    <div class="team-grid">
+                        <div class="team-card">
+                            <strong>Mathis Le Balch</strong>
+                            <span>Programmation, Game Design & Intégration</span>
+                        </div>
+                        <div class="team-card">
+                            <strong>Antonin Chabaud-Pech</strong>
+                            <span>Programmation, Game Design & Intégration</span>
+                        </div>
+                        <div class="team-card">
+                            <strong>Alexis Bastide</strong>
+                            <span>Programmation, Game Design & Intégration</span>
+                        </div>
+                        <div class="team-card">
+                            <strong>Maévann Poupon</strong>
+                            <span>Écriture & Dialogues des personnages</span>
+                        </div>
+                        <div class="team-card">
+                            <strong>Elie Nerrand</strong>
+                            <span>Modélisation 3D</span>
+                        </div>
+                        <div class="team-card">
+                            <strong>Juliana Chudzik</strong>
+                            <span>Direction artistique & Visuels</span>
+                        </div>
+                        <div class="team-card">
+                            <strong>Gabriel Bernard</strong>
+                            <span>Direction artistique & Visuels</span>
+                        </div>
+                        <div class="team-card">
+                            <strong>Tania Rizkiputri</strong>
+                            <span>Direction artistique & Visuels</span>
+                        </div>
+                        <div class="team-card">
+                            <strong>Eva Mialon</strong>
+                            <span>Composition musicale & Identité sonore</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
 
+    <!-- Barre des tâches Windows -->
+    <div class="windows-taskbar">
+        <div class="taskbar-start" onclick="window.scrollTo(0,0);">
+            <img src="ressources/256x256.png" width="20" height="20"
+                style="filter: drop-shadow(0 0 2px rgba(255,255,255,0.8));">
+            <span>Démarrer</span>
+        </div>
+        <div class="taskbar-items">
+            <a href="Portfolio-apprentissage.html" class="taskbar-item"
+                style="text-decoration:none; color:inherit; padding: 0 10px;" title="← Portfolio Apprentissage">
+                <i class="fas fa-chevron-left"></i>
+            </a>
+            <a href="index.html" class="taskbar-item" style="text-decoration:none; color:inherit;">
+                <img src="https://dimden.dev/images/buttons/win95.gif" width="16" height="16"
+                    style="margin-right: 5px;"> Portfolio.exe
+            </a>
+            <div class="taskbar-item active">
+                <img src="ressources/iconCGJ.png" width="16" height="16"
+                    style="margin-right: 5px; border-radius: 2px; object-fit:cover;"> CodeGameJam.exe
+            </div>
+            <a href="nuit-info.html" class="taskbar-item" style="text-decoration:none; color:inherit; padding: 0 10px;"
+                title="Nuit de l'Info →">
+                <i class="fas fa-chevron-right"></i>
+            </a>
+        </div>
+        <div class="taskbar-tray">
+            <div id="google_translate_element"></div>
+            <span style="margin: 0 10px; opacity: 0.6;">|</span>
+            <div id="taskbar-clock" style="font-weight: bold; padding: 0 5px;"></div>
+            <span style="margin: 0 10px; opacity: 0.6;">|</span>
+            <span id="copyright" style="font-size: 0.8rem;">© <span id="current-year"></span> Mathis Le Balch. 🌿</span>
+        </div>
+    </div>
+
     <script>
-        const startBtn = document.getElementById('start-game-btn');
-        const iframe = document.getElementById('game-iframe');
-        const overlay = document.getElementById('launch-screen');
-        const portal = document.getElementById('game-portal');
-
-        startBtn.addEventListener('click', () => {
-            // Charge le jeu
-            iframe.src = "games/afterParty/index.html";
-            iframe.style.display = "block";
-            overlay.style.display = "none";
-
-            // Demande le plein écran
-            if (portal.requestFullscreen) {
-                portal.requestFullscreen();
-            } else if (portal.webkitRequestFullscreen) { /* Safari */
-                portal.webkitRequestFullscreen();
-            } else if (portal.msRequestFullscreen) { /* IE11 */
-                portal.msRequestFullscreen();
-            }
-
-            // Focus l'iframe pour les contrôles clavier
-            iframe.focus();
-        });
-
-        // Optionnel: Sortir du plein écran si nécessaire ou gérer les événements
-        document.addEventListener('fullscreenchange', () => {
-            if (!document.fullscreenElement) {
-                // Optionnel: on pourrait arrêter le jeu ou réduire l'iframe
-            }
-        });
+        (function () {
+            try {
+                const userLang = navigator.language || navigator.userLanguage;
+                if (userLang && !userLang.toLowerCase().startsWith('fr') && !document.cookie.includes('googtrans')) {
+                    const langCode = userLang.split('-')[0];
+                    document.cookie = `googtrans=/fr/${langCode}; path=/`;
+                    document.cookie = `googtrans=/fr/${langCode}; domain=.${location.hostname}; path=/`;
+                }
+            } catch (e) { }
+        })();
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'fr',
+                autoDisplay: false,
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
     </script>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
     <script defer src="script.js"></script>
 </body>
 
