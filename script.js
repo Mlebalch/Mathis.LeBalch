@@ -52,26 +52,29 @@ if(secretTrigger) secretTrigger.addEventListener('click', toggleFever);
 if(butterflyTrigger) butterflyTrigger.addEventListener('click', toggleFever);
 
 // ==========================================
-// VISITOR COUNTER — Global Digit Display (API)
+// VISITOR COUNTER — Global Digit Display (JSON API)
 // ==========================================
 (async function loadEx33Counter() {
     const display = document.getElementById('ex33-visitor-display');
     if (!display) return;
 
+    // Use a stable JSON hit counter API (dwyl/hits)
+    // This allows us to get the raw number and keep our custom "Ex33" style
     let count;
     try {
-        // Using CounterAPI.dev for global counting
-        const response = await fetch('https://api.counterapi.dev/v1/mlebalch-portfolio/total-visits/hit');
+        const response = await fetch('https://hits.dwyl.com/mlebalch/Mathis.LeBalch.json');
         const data = await response.json();
-        count = data.count;
+        // dwyl returns { "number": 123, ... }
+        count = data.number || 1337;
     } catch (e) {
-        console.warn("Global counter offline, using local fallback:", e);
-        count = parseInt(localStorage.getItem('mlb_visit_count') || '1024', 10) + 1;
+        console.warn("Global counter API blocked or offline, using local fallback.");
+        // Fallback: start at a semi-realistic number if local storage is empty
+        count = parseInt(localStorage.getItem('mlb_visit_count') || '1337', 10) + 1;
         localStorage.setItem('mlb_visit_count', count);
     }
 
     // Render each digit with Ex33 style
-    // We pad to 6 digits for the classic '90s look
+    // Padding to 6 digits for the retro hit-counter look
     const countStr = String(count).padStart(6, '0');
     display.innerHTML = '';
     for (const digit of countStr) {
