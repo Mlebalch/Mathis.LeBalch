@@ -58,17 +58,15 @@ if(butterflyTrigger) butterflyTrigger.addEventListener('click', toggleFever);
     const display = document.getElementById('ex33-visitor-display');
     if (!display) return;
 
-    // Use a stable JSON hit counter API (dwyl/hits)
-    // This allows us to get the raw number and keep our custom "Ex33" style
+    // Use CounterAPI.dev (more reliable CORS support)
     let count;
     try {
-        const response = await fetch('https://hits.dwyl.com/mlebalch/Mathis.LeBalch.json');
+        const response = await fetch('https://api.counterapi.dev/v1/mlebalch-os-retro/total-visits/hit');
+        if (!response.ok) throw new Error('API unstable');
         const data = await response.json();
-        // dwyl returns { "number": 123, ... }
-        count = data.number || 1337;
+        count = data.count || 1337;
     } catch (e) {
-        console.warn("Global counter API blocked or offline, using local fallback.");
-        // Fallback: start at a semi-realistic number if local storage is empty
+        console.warn("Global counter API unavailable, using local fallback.");
         count = parseInt(localStorage.getItem('mlb_visit_count') || '1337', 10) + 1;
         localStorage.setItem('mlb_visit_count', count);
     }
