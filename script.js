@@ -52,32 +52,32 @@ if(secretTrigger) secretTrigger.addEventListener('click', toggleFever);
 if(butterflyTrigger) butterflyTrigger.addEventListener('click', toggleFever);
 
 // ==========================================
-// VISITOR COUNTER — Global Digit Display (JSONP to bypass CORS)
+// VISITOR COUNTER — Global Digit Display
 // ==========================================
-window.renderVisitorCounter = function(data) {
-    const display = document.getElementById('ex33-visitor-display');
-    if (!display || !data || !data.value) return;
-
-    const count = data.value;
-    const countStr = String(count).padStart(6, '0');
-    display.innerHTML = '';
-    for (const digit of countStr) {
-        const span = document.createElement('span');
-        span.className = 'ex33-digit';
-        span.textContent = digit;
-        display.appendChild(span);
-    }
-};
-
-(function initGlobalCounter() {
+(async function initGlobalCounter() {
     const display = document.getElementById('ex33-visitor-display');
     if (!display) return;
 
-    // JSONP bypasses CORS by loading the API as a script
-    const script = document.createElement('script');
-    // Using api.countapi.it (stable fork) with a unique namespace
-    script.src = 'https://api.countapi.it/hit/mlebalch-os-p/visits?callback=renderVisitorCounter';
-    document.body.appendChild(script);
+    try {
+        // Using counterapi.dev as a reliable free alternative
+        const response = await fetch('https://api.counterapi.dev/v1/mlebalch-os-p/visits/up');
+        if (!response.ok) throw new Error('Network response was not ok');
+        const data = await response.json();
+        
+        const count = data.count;
+        if (count === undefined) return;
+
+        const countStr = String(count).padStart(6, '0');
+        display.innerHTML = '';
+        for (const digit of countStr) {
+            const span = document.createElement('span');
+            span.className = 'ex33-digit';
+            span.textContent = digit;
+            display.appendChild(span);
+        }
+    } catch (error) {
+        console.error('Erreur lors du chargement du compteur de visites:', error);
+    }
 })();
 
 
